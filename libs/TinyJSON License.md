@@ -1,3 +1,8 @@
+This project uses "TinyJSON", which was made by pbhogan.
+https://github.com/pbhogan/TinyJSON
+
+The "LICENSE.MD" file for TinyJSON goes as follows:
+```
 Copyright (c) 2013 Patrick Hogan
 
 Based on MiniJSON by Calvin Rien
@@ -24,3 +29,4 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```

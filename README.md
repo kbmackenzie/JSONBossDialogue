@@ -110,6 +110,8 @@ A few things you should keep in mind about your JSON file:
 - This mod may not be compatible with other mods that change boss dialogue.
 - Validating your JSON with the help of an online tool can save you a lot of time and headache! Just look up "JSON Validator".
   - An online JSON validator tool I personally like is [JSONLint](https://jsonlint.com/), it's neat! 
+- Your `_bd.json` file can be placed anywhere within the `BepInEx/plugins` folder, including subfolders.
+- Feel free to use a `_bd.json` file for custom dialogue when making your own mod! So long as you set this mod as a dependency, it should work.
 
 Being unable to have more than one `_bd.json` file in the plugins folder does sadly mean that mods that use this custom dialogue mod are incompatible with each other: they cancel each other out and the dialogue will just default to base game dialogue. Everything else should work completely fine, there simply won't be custom dialogue.
 

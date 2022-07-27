@@ -27,7 +27,9 @@ namespace JSONBossDialogue
             "TrapperTraderPhase2", // Phase2
             "TeachFishHookAimRandom", // AimHookRandom
             "TeachFishHookAimNew", // AimHookNew
-            "TeachFishHookPull" // AimHookPull
+            "TeachFishHookPull", // AimHookPull
+            "TrapperTraderPreTrade", //PreTrade
+            "TrapperTraderPostTrade" //PostTrade
         };
 
         public static int arrayIndex;
@@ -70,6 +72,7 @@ namespace JSONBossDialogue
             "G-G-GOLD! I'VE STRUCK GOLD!", // AfterPickaxe
             "N-... NO GOLD?", // IfNoGold
             "Go fish.", // GoFish
+            "Trade for what you can, but know this: the rest will stay and fight for me." //Trade
         };
 
         // DIALOGUE PATCH - STRINGS

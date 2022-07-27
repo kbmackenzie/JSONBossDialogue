@@ -5,10 +5,10 @@ namespace JSONBossDialogue
     public static class JSONInput
     {
         // Custom JSON strings - IDs
-        public static string[] strDialogue = new string[11];
+        public static string[] strDialogue = new string[13];
 
         // Custom JSON strings - ShowUntilInput
-        public static string[] strDialogue2 = new string[4];
+        public static string[] strDialogue2 = new string[5];
 
         // Load JSON
         public static void LoadJSON(JSONHandler obj)
@@ -25,12 +25,15 @@ namespace JSONBossDialogue
             strDialogue[8] = obj.Angler["AimingHook"];
             strDialogue[9] = obj.Angler["EasyChoose"];
             strDialogue[10] = obj.Angler["HookPull"];
+            strDialogue[11] = obj.TrapperTrader["PreTrade"];
+            strDialogue[12] = obj.TrapperTrader["PostTrade"];
 
             // Load custom dialogue lines into strDialogue2:
             strDialogue2[0] = obj.Prospector["BeforePickaxe"];
             strDialogue2[1] = obj.Prospector["AfterPickaxe"];
             strDialogue2[2] = obj.Prospector["IfNoGold"];
             strDialogue2[3] = obj.Angler["GoFish"];
+            strDialogue2[4] = obj.TrapperTrader["Trade"];
         }
     }
 }

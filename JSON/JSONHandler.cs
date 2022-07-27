@@ -22,7 +22,8 @@ namespace JSONBossDialogue
         public Dictionary<string, string> TrapperTrader = new Dictionary<string, string>()
         {
             { "PreIntro", "" }, { "Intro", "" },
-            { "PrePhase2", "" }, { "Phase2", "" }
+            { "PrePhase2", "" }, { "Phase2", "" },
+            { "PreTrade", "" }, { "Trade", "" }, { "PostTrade", "" }
         };
     }
 }

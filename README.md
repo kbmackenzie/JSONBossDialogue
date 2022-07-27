@@ -110,7 +110,7 @@ A few things you should keep in mind about your JSON file:
   - An online JSON validator tool I personally like is [JSONLint](https://jsonlint.com/), it's neat! 
 
 Being unable to have more than one `_bd.json` file in the plugins folder does sadly mean that mods that use this custom dialogue mod are incompatible with each other: they cancel each other out and the dialogue will just default to base game dialogue. Everything else should work completely fine, there simply won't be custom dialogue.
-I may add a workaround for that in the future. For now, the simplest way around this is to just choose one of the conflicting `_bd.json` files to keep and either renaming or deleting the others.
+I may add a workaround for that in the future. For now, the simplest way around this is to just choose one of the conflicting `_bd.json` files to keep and either rename or delete the others.
 
 
 ## Help

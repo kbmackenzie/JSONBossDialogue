@@ -74,7 +74,7 @@ And here's an explanation of each field and the dialogue lines they replace:
 | PreIntro      | Leshy's ominous lines before the Prospector's intro.                                                                                  |
 | Intro         | Prospector's introduction.                                                                                                            |
 | BeforePickaxe | What the Prospector says before hitting the board with the pickaxe. Defaults to *"THAR'S GOLD IN THEM CARDS!"*.                       |
-| After Pickaxe | What the Prospector says *after* hitting the board with the pickaxe. Defaults to *"G-G-GOLD! I'VE STRUCK GOLD!"*.                     |
+| AfterPickaxe  | What the Prospector says *after* hitting the board with the pickaxe. Defaults to *"G-G-GOLD! I'VE STRUCK GOLD!"*.                     |
 | IfNoGold      | What the Prospector says if there are no cards on the board when he's about to strike it (I assume?). Defaults to *"N-... NO GOLD?"*. |
 
 #### Angler

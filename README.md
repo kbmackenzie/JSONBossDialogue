@@ -63,6 +63,8 @@ Afterward, paste the following into the file:
 
 Your custom dialogue should go between the second pair of quotation marks in each line. Be sure not to erase any commas!
 
+All custom dialogue can only be one line, regardless of how many lines there normally in the corresponding original dialogue. I'm sorry, but it's simpler that way. I may add support for multiple lines eventually, though!
+
 You can leave as many fields empty as you wish. If a field is empty, the mod will just let the game play the regular dialogue for the corresponding part.
 
 And here's an explanation of each field and the dialogue lines they replace:

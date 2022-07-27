@@ -120,7 +120,7 @@ I may add a workaround for that in the future. For now, the simplest way around 
 
 **A:** Double-check your JSON file. Make sure it ends in `_bd.json` and that it's somewhere inside of the `BepInEx/plugins` folder.
 
-**Q:** *"I got an error that says there's more than one `_bd.json` in the plugins folder! What do I do?"*
+**Q:** *"I got an error that says there's more than one `_bd.json` file in the plugins folder! What do I do?"*
 
 **A:** That's self explanatory. You cannot have more than one `_bd.json` file in the plugins folder. Choose one and delete the others.
 Read the "Important Notes" section above for more information on this issue.

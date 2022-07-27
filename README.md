@@ -117,12 +117,15 @@ I may add a workaround for that in the future. For now, the simplest way around 
 
 ## Help
 **Q:** *"I got an error that says no `_bd.json` file could be found! What do I do?"*
+
 **A:** Double-check your JSON file. Make sure it ends in `_bd.json` and that it's somewhere inside of the `BepInEx/plugins` folder.
 
 **Q:** *"I got an error that says there's more than one `_bd.json` in the plugins folder! What do I do?"*
+
 **A:** That's self explanatory. You cannot have more than one `_bd.json` file in the plugins folder. Choose one and delete the others.
 Read the "Important Notes" section above for more information on this issue.
 
 **Q:** *"I got an error that says it could not load JSON from my `_bd.json` file! What does this mean?*
+
 **A:** It means there's something wrong with your file. Make sure you didn't erase any commas or curly brackets.
 As I mentioned in the "Important Notes" section above, using an online JSON validator tool can help you a lot with this. I personally like [JSONLint](https://jsonlint.com/), it's neat.

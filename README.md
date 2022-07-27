@@ -25,7 +25,7 @@ There are two ways of installing this mod: with the help of a mod manager (like 
 
 
 ## Creating the JSON File
-**Your JSON file’s name must end in `“_bd.json”`.** This is required in order for this mod to find it.
+**Your JSON file’s name must end in `_bd.json`.** This is required in order for this mod to find it.
 You can name it anything you want so long as the name ends in `_bd.json`.
 
 If you don't know how to create a JSON file, an easy way to do it is creating a `.txt` file and renaming it to end in `.json`.

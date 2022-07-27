@@ -1,7 +1,7 @@
 This project uses "TinyJSON", which was made by pbhogan.
 https://github.com/pbhogan/TinyJSON
 
-The "LICENSE.MD" file for TinyJSON goes as follows:
+The "LICENSE.MD" file for TinyJSON says:
 ```
 Copyright (c) 2013 Patrick Hogan
 

@@ -1,0 +1,26 @@
+{
+	"Prospector": {
+		"PreIntro": "",
+		"Intro": "",
+		"BeforePickaxe": "",
+		"AfterPickaxe": "",
+		"IfNoGold": ""
+	},
+	"Angler": {
+		"PreIntro": "",
+		"Intro": "",
+		"GoFish": "",
+		"AimingHook": "",
+		"EasyChoose": "",
+		"HookPull": ""
+	},
+	"TrapperTrader": {
+		"PreIntro": "",
+		"Intro": "",
+		"PrePhase2": "",
+		"Phase2": "",
+		"PreTrade": "",
+		"Trade": "",
+		"PostTrade": ""
+	}
+}

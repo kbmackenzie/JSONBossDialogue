@@ -6,7 +6,7 @@ This mod doesn't change your game files and shouldn't affect your save data, but
 ## Installation
 This mod’s only dependency is BepInEx, which you can find in the [BepInEx Github page](https://github.com/BepInEx/BepInEx/releases) or in the Thunderstore page for ["BepInExPack Inscryption"](https://inscryption.thunderstore.io/package/BepInEx/BepInExPack_Inscryption/). The latter comes with a preconfigured `BepInEx.cfg`, so it's advised.
 
-There are two ways of installing this mod: with the help of a mod manager (like R2Modman or the Thunderstore Mod Manager) or manually.
+There are two ways of installing this mod: with the help of a mod manager (like r2modman or the Thunderstore Mod Manager) or manually.
 
 **At the time of writing this,** the mod isn't yet on Thunderstore, so using a mod manager will only help you install BepInEx. This is already extremely helpful, though.
 

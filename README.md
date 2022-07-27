@@ -79,14 +79,14 @@ And here's an explanation of each field and the dialogue lines they replace:
 
 #### Angler
 
-| Field         | Dialogue                                                                                     |
-|---------------|----------------------------------------------------------------------------------------------|
-| PreIntro      | Leshy's ominous lines before the Angler's intro.                                             |
-| Intro         | Angler's introduction.                                                                       |
-| GoFish        | What the Angler says after placing his Bait Buckets.                                         |
-| AimHookRandom | What the Angler says when he randomly aims his hook at one of your cards.                    |
-| EasyChoose    | What the Angler says when you place a new card on the board and he aims his hook towards it. |
-| HookPull      | What the Angler says when he pulls one of your cards with his hook.                          |
+| Field      | Dialogue                                                                                     |
+|------------|----------------------------------------------------------------------------------------------|
+| PreIntro   | Leshy's ominous lines before the Angler's intro.                                             |
+| Intro      | Angler's introduction.                                                                       |
+| GoFish     | What the Angler says after placing his Bait Buckets.                                         |
+| AimingHook | What the Angler says when he randomly aims his hook at one of your cards.                    |
+| EasyChoose | What the Angler says when you place a new card on the board and he aims his hook towards it. |
+| HookPull   | What the Angler says when he pulls one of your cards with his hook.                          |
 
 #### Trapper / Trader
 

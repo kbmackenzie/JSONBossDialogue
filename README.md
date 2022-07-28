@@ -40,7 +40,7 @@ Afterward, paste the following into the file:
 		"BeforePickaxe": "",
 		"AfterPickaxe": "",
 		"IfNoGold": "",
-                "MuleKilled": ""
+    "MuleKilled": ""
 	},
 	"Angler": {
 		"PreIntro": "",
@@ -66,7 +66,7 @@ Your custom dialogue should go between the second pair of quotation marks in eac
 
 All custom dialogue can only be one line, regardless of how many lines there normally in the corresponding original dialogue. I'm sorry, but it's simpler that way. I may add support for multiple lines eventually, though!
 
-You can leave as many fields empty as you wish. If a field is empty, the mod will let the game play the regular dialogue for the corresponding part.
+You can leave as many fields empty as you wish. If a field is empty, the mod will let the game play the regular dialogue for the corresponding part. However, **DO NOT erase any of the fields.** Doing so WILL cause an error.
 
 And here's an explanation of each field and the dialogue lines they replace:
 
@@ -74,22 +74,23 @@ And here's an explanation of each field and the dialogue lines they replace:
 
 | Field         | Dialogue                                                                                                                              |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| PreIntro      | Leshy's ominous lines before the Prospector's intro.                                                                                  |
+| PreIntro      | Leshy's ominous lines before the Prospector's intro. (I think this is skipped in Kaycee's Mod.)                                       |
 | Intro         | Prospector's introduction.                                                                                                            |
 | BeforePickaxe | What the Prospector says before hitting the board with the pickaxe. Defaults to *"THAR'S GOLD IN THEM CARDS!"*.                       |
 | AfterPickaxe  | What the Prospector says *after* hitting the board with the pickaxe. Defaults to *"G-G-GOLD! I'VE STRUCK GOLD!"*.                     |
 | IfNoGold      | What the Prospector says if there are no cards on the board when he's about to strike it (I assume?). Defaults to *"N-... NO GOLD?"*. |
+| MuleKilled    | What the Prospector says when you kill his Mule card.                                                                                 |
 
 #### Angler
 
-| Field      | Dialogue                                                                                     |
-|------------|----------------------------------------------------------------------------------------------|
-| PreIntro   | Leshy's ominous lines before the Angler's intro.                                             |
-| Intro      | Angler's introduction.                                                                       |
-| GoFish     | What the Angler says after placing his Bait Buckets.                                         |
-| AimingHook | What the Angler says when he randomly aims his hook at one of your cards.                    |
-| EasyChoose | What the Angler says when you place a new card on the board and he aims his hook towards it. |
-| HookPull   | What the Angler says when he pulls one of your cards with his hook.                          |
+| Field      | Dialogue                                                                                                                                |
+|------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| PreIntro   | Leshy's ominous lines before the Angler's intro.                                                                                        |
+| Intro      | Angler's introduction.                                                                                                                  |
+| GoFish     | What the Angler says after placing his Bait Buckets.                                                                                    |
+| AimingHook | What the Angler says when he randomly aims his hook at one of your cards.  (I thiiiink this is skipped in Kaycee's Mod?)                |
+| EasyChoose | What the Angler says when you place a new card on the board and he aims his hook towards it. (I think this is skipped in Kaycee's mod.) |
+| HookPull   | What the Angler says when he pulls one of your cards with his hook. (I think this is skipped in Kaycee's Mod.)                          |
 
 #### Trapper / Trader
 
@@ -133,6 +134,10 @@ Read the "Important Notes" section above for more information on this issue.
 
 **A:** It means there's something wrong with your file. Make sure you didn't erase any commas or curly brackets.
 As I mentioned in the "Important Notes" section above, using an online JSON validator tool can help you a lot with this. I personally like [JSONLint](https://jsonlint.com/), it's neat.
+
+**Q:** *"Does this mod support color codes?*
+
+**A:** I don't think so...?? I haven't tested it enough! If you can get color codes working though, you should totally let me know!
 
 ## Credits
 This project uses [TinyJSON](https://github.com/pbhogan/TinyJSON) for parsing JSON data. TinyJSON was made by [pbhogan](https://github.com/pbhogan/).

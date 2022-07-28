@@ -38,25 +38,29 @@ namespace JSONBossDialogue
         {
             // If bossDialogue = True, player is in a boss fight.
 
-            // eventId = "id" of dialogue data in dialogue_data file
-            // If id is in this array, it can be replaced.
-            bool stringInArray = bossDialogueIDs.Contains(eventId);
-
-            // If in boss battle and eventId string is in the dialogue array:
-            if (bossDialogue && stringInArray)
+            // If in boss battle:
+            if (bossDialogue)
             {
-                // Find index of string item in ID array
-                arrayIndex = Array.IndexOf(bossDialogueIDs, eventId);
+                // eventId = "id" of dialogue data in dialogue_data file
+                // If id is in this array, it can be replaced.
+                bool stringInArray = bossDialogueIDs.Contains(eventId);
 
-                // See if matching index of custom dialogue array is empty.
-                bool isEmpty = JSONInput.strDialogue[arrayIndex].IsNullOrWhiteSpace();
+                // If 'id' string is in array:
+                if (stringInArray)
+                {
+                    // Find index of string item in ID array
+                    arrayIndex = Array.IndexOf(bossDialogueIDs, eventId);
 
-                // If not, fetch dialogue
-                getDialogue = !isEmpty;
+                    // See if matching index of custom dialogue array is empty.
+                    bool isEmpty = JSONInput.strDialogue[arrayIndex].IsNullOrWhiteSpace();
 
-                eventId = "Hint_CantSacrificeTerrain";
-                // ^ All this does is ensure dialogue is kept to a single line.
-                // Don't worry too much about it.
+                    // If not, fetch dialogue
+                    getDialogue = !isEmpty;
+
+                    eventId = "Hint_CantSacrificeTerrain";
+                    // ^ All this does is ensure dialogue is kept to a single line.
+                    // Don't worry too much about it.
+                }
             }
         }
     }
@@ -80,11 +84,11 @@ namespace JSONBossDialogue
         {
             // message = String passed to be shown as dialogue.
 
-            bool strInArray2 = bossDialogueStrings.Contains(message);
-            // ^ This is for patching the dialogue strings that don't have IDs.
-
             if (PatchDialogue.bossDialogue)
             {
+                bool strInArray2 = bossDialogueStrings.Contains(message);
+                // ^ This is for patching the dialogue strings that don't have IDs.
+
                 if (strInArray2)
                 {
                     // Find index of string in array

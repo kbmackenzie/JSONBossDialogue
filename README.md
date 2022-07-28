@@ -132,3 +132,8 @@ Read the "Important Notes" section above for more information on this issue.
 
 **A:** It means there's something wrong with your file. Make sure you didn't erase any commas or curly brackets.
 As I mentioned in the "Important Notes" section above, using an online JSON validator tool can help you a lot with this. I personally like [JSONLint](https://jsonlint.com/), it's neat.
+
+## Credits
+This project uses [TinyJSON](https://github.com/pbhogan/TinyJSON) for parsing JSON data. TinyJSON was made by [pbhogan](https://github.com/pbhogan/).
+
+TinyJSON's license can be found [here](https://github.com/pbhogan/TinyJSON/blob/master/LICENSE.md).

@@ -1,7 +1,6 @@
-This project uses "TinyJSON", which was made by pbhogan.
-https://github.com/pbhogan/TinyJSON
+This project uses ["TinyJSON"](https://github.com/pbhogan/TinyJSON) for parsing JSON data. TinyJSON was made by [pbhogan](https://github.com/pbhogan/).
 
-The "LICENSE.MD" file for TinyJSON says:
+The ["LICENSE.MD" file for TinyJSON](https://github.com/pbhogan/TinyJSON/blob/master/LICENSE.md) says:
 ```
 Copyright (c) 2013 Patrick Hogan
 

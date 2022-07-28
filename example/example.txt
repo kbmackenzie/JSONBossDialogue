@@ -4,7 +4,8 @@
 		"Intro": "",
 		"BeforePickaxe": "",
 		"AfterPickaxe": "",
-		"IfNoGold": ""
+		"IfNoGold": "",
+		"MuleKilled": ""
 	},
 	"Angler": {
 		"PreIntro": "",

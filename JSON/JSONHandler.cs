@@ -10,7 +10,7 @@ namespace JSONBossDialogue
         {
             { "PreIntro", "" }, { "Intro", "" },
             { "BeforePickaxe", "" }, { "AfterPickaxe", "" },
-            { "IfNoGold", "" }
+            { "IfNoGold", "" }, { "MuleKilled", "" }
         };
 
         public Dictionary<string, string> Angler = new Dictionary<string, string>()

@@ -29,7 +29,8 @@ namespace JSONBossDialogue
             "TeachFishHookAimNew", // AimHookNew
             "TeachFishHookPull", // AimHookPull
             "TrapperTraderPreTrade", // PreTrade
-            "TrapperTraderPostTrade" // PostTrade
+            "TrapperTraderPostTrade", // PostTrade
+            "ProspectorMuleKilled" // MuleKilled
         };
 
         // Add later: "ProspectorMuleKilled" // Mule killed.

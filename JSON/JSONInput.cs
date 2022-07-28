@@ -8,7 +8,10 @@ namespace JSONBossDialogue
         public static string[] strDialogue = new string[13];
 
         // Custom JSON strings - ShowUntilInput
-        public static string[] strDialogue2 = new string[5];
+        public static string[] strDialogue2 = new string[4];
+
+        // Custom JSON strings - ShowMessage
+        public static string[] strDialogue3 = new string[1];
 
         // Load JSON
         public static void LoadJSON(JSONHandler obj)
@@ -33,7 +36,7 @@ namespace JSONBossDialogue
             strDialogue2[1] = obj.Prospector["AfterPickaxe"];
             strDialogue2[2] = obj.Prospector["IfNoGold"];
             strDialogue2[3] = obj.Angler["GoFish"];
-            strDialogue2[4] = obj.TrapperTrader["Trade"];
+            strDialogue3[0] = obj.TrapperTrader["Trade"];
         }
     }
 }

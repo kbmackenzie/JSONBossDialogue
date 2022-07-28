@@ -28,9 +28,11 @@ namespace JSONBossDialogue
             "TeachFishHookAimRandom", // AimHookRandom
             "TeachFishHookAimNew", // AimHookNew
             "TeachFishHookPull", // AimHookPull
-            "TrapperTraderPreTrade", //PreTrade
-            "TrapperTraderPostTrade" //PostTrade
+            "TrapperTraderPreTrade", // PreTrade
+            "TrapperTraderPostTrade" // PostTrade
         };
+
+        // Add later: "ProspectorMuleKilled" // Mule killed.
 
         public static int arrayIndex;
 
@@ -75,8 +77,7 @@ namespace JSONBossDialogue
             "THAR'S GOLD IN THEM CARDS!", // BeforePickaxe
             "G-G-GOLD! I'VE STRUCK GOLD!", // AfterPickaxe
             "N-... NO GOLD?", // IfNoGold
-            "Go fish.", // GoFish
-            "Trade for what you can, but know this: the rest will stay and fight for me." //Trade
+            "Go fish." // GoFish
         };
 
         // DIALOGUE PATCH - STRINGS
@@ -105,6 +106,40 @@ namespace JSONBossDialogue
                 {
                     // Patch dialogue.
                     message = JSONInput.strDialogue[PatchDialogue.arrayIndex];
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(TextDisplayer), nameof(TextDisplayer.ShowMessage))]
+    public static class PatchShowMessage {
+
+        // Array of strings of dialogue passed through the ShowMessage method:
+        public static string[] bossDialogueStrings = {
+            "Trade for what you can, but know this: the rest will stay and fight for me." // Trade 
+        };
+
+        // DIALOGUE PATCH - STRINGS
+        static void Prefix(ref string message)
+        {
+            // message = String passed to be shown as dialogue.
+
+            if (PatchDialogue.bossDialogue)
+            {
+                bool strInArray3 = bossDialogueStrings.Contains(message);
+                // ^ This is for patching the dialogue strings that don't have IDs.
+
+                if (strInArray3)
+                {
+                    // Find index of string in array
+                    int index = Array.IndexOf(bossDialogueStrings, message);
+
+                    // See if the index in the custom string array is empty.
+                    bool isEmpty = JSONInput.strDialogue3[index].IsNullOrWhiteSpace();
+
+                    // Patch dialogue.
+                    message = isEmpty ? message : JSONInput.strDialogue3[index];
+
                 }
             }
         }

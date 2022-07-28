@@ -79,7 +79,7 @@ And here's an explanation of each field and the dialogue lines they replace:
 | BeforePickaxe | What the Prospector says before hitting the board with the pickaxe. Defaults to *"THAR'S GOLD IN THEM CARDS!"*.                       |
 | AfterPickaxe  | What the Prospector says *after* hitting the board with the pickaxe. Defaults to *"G-G-GOLD! I'VE STRUCK GOLD!"*.                     |
 | IfNoGold      | What the Prospector says if there are no cards on the board when he's about to strike it (I assume?). Defaults to *"N-... NO GOLD?"*. |
-| MuleKilled    | What the Prospector says when you kill his Mule card.                                                                                 |
+| MuleKilled    | What the Prospector says when you kill his Pack Mule card.                                                                            |
 
 #### Angler
 

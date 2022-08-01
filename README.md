@@ -64,7 +64,7 @@ Afterward, paste the following into the file:
 
 Your custom dialogue should go between the second pair of quotation marks in each line. Be sure not to erase any commas!
 
-All custom dialogue can only be one line, regardless of how many lines there normally in the corresponding original dialogue. I'm sorry, but it's simpler that way. I may add support for multiple lines eventually, though!
+All custom dialogue can only be one line, regardless of how many lines there normally are in the corresponding original dialogue. I'm sorry, but it's simpler that way. I may add support for multiple lines eventually, though!
 
 You can leave as many fields empty as you wish. If a field is empty, the mod will let the game play the regular dialogue for the corresponding part. However, **DO NOT erase any of the fields.** Doing so WILL cause an error.
 
@@ -79,7 +79,7 @@ And here's an explanation of each field and the dialogue lines they replace:
 | BeforePickaxe | What the Prospector says before hitting the board with the pickaxe. Defaults to *"THAR'S GOLD IN THEM CARDS!"*.                       |
 | AfterPickaxe  | What the Prospector says *after* hitting the board with the pickaxe. Defaults to *"G-G-GOLD! I'VE STRUCK GOLD!"*.                     |
 | IfNoGold      | What the Prospector says if there are no cards on the board when he's about to strike it (I assume?). Defaults to *"N-... NO GOLD?"*. |
-| MuleKilled    | What the Prospector says when you kill his Mule card.                                                                                 |
+| MuleKilled    | What the Prospector says when you kill his Pack Mule card.                                                                            |
 
 #### Angler
 
@@ -108,7 +108,7 @@ And here's an explanation of each field and the dialogue lines they replace:
 ## Important Notes
 A few things you should keep in mind about your JSON file:
 
-- **You cannot have more than one `_bd.json` file in the plugins folder.** Having more than one WILL cause an error. Choose one.
+- **You cannot have more than one `_bd.json` file in the plugins folder.** Having more than one WILL cause an error, and all dialogue will default to the base game dialogue. Everything else should work completely fine, though.
 - This mod may not be compatible with other mods that change boss dialogue.
 - Validating your JSON with the help of an online tool can save you a lot of time and headache! Just look up "JSON Validator".
   - An online JSON validator tool I personally like is [JSONLint](https://jsonlint.com/), it's neat! 

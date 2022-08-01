@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using DiskCardGame;
 using HarmonyLib;
+//using System.Collections.Generic;
 
 namespace JSONBossDialogue
 {
@@ -15,27 +16,7 @@ namespace JSONBossDialogue
 
         public static bool getDialogue = false;
 
-        // String array with all the eventIds of the dialogue for the bosses. 
-        public static string[] bossDialogueIDs = {
-            "ProspectorPreIntro", // PreIntro
-            "ProspectorIntro", // Intro
-            "AnglerPreIntro", // PreIntro
-            "AnglerIntro", // Intro
-            "TrapperTraderPreIntro", // PreIntro
-            "TrapperTraderIntro", // Intro
-            "TrapperTraderPrePhase2", // PrePhase2
-            "TrapperTraderPhase2", // Phase2
-            "TeachFishHookAimRandom", // AimHookRandom
-            "TeachFishHookAimNew", // AimHookNew
-            "TeachFishHookPull", // AimHookPull
-            "TrapperTraderPreTrade", // PreTrade
-            "TrapperTraderPostTrade", // PostTrade
-            "ProspectorMuleKilled" // MuleKilled
-        };
-
-        // Add later: "ProspectorMuleKilled" // Mule killed.
-
-        public static int arrayIndex;
+        public static string dialogueID;        
 
         static void Prefix(ref string eventId)
         {
@@ -46,19 +27,19 @@ namespace JSONBossDialogue
             {
                 // eventId = "id" of dialogue data in dialogue_data file
                 // If id is in this array, it can be replaced.
-                bool stringInArray = bossDialogueIDs.Contains(eventId);
+                bool stringInArray = JSONInput.strPatch.ContainsKey(eventId);
 
                 // If 'id' string is in array:
                 if (stringInArray)
                 {
-                    // Find index of string item in ID array
-                    arrayIndex = Array.IndexOf(bossDialogueIDs, eventId);
-
-                    // See if matching index of custom dialogue array is empty.
-                    bool isEmpty = JSONInput.strDialogue[arrayIndex].IsNullOrWhiteSpace();
+                    // See if matching key has empty/null value in strPatch dictionary:
+                    bool isEmpty = JSONInput.strPatch[eventId].IsNullOrWhiteSpace();
 
                     // If not, fetch dialogue
                     getDialogue = !isEmpty;
+
+                    // Store dialogue ID in this string variable for use in ShowUntilInput
+                    dialogueID = eventId;
 
                     eventId = "Hint_CantSacrificeTerrain";
                     // ^ All this does is ensure dialogue is kept to a single line.
@@ -106,7 +87,7 @@ namespace JSONBossDialogue
                 else if (PatchDialogue.getDialogue)
                 {
                     // Patch dialogue.
-                    message = JSONInput.strDialogue[PatchDialogue.arrayIndex];
+                    message = JSONInput.strPatch[PatchDialogue.dialogueID];
                 }
             }
         }

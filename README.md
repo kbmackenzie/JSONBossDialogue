@@ -73,7 +73,7 @@ Your custom dialogue should go between the second pair of quotation marks in eac
 
 All custom dialogue can only be one line, regardless of how many lines there normally are in the corresponding original dialogue. I'm sorry, but it's simpler that way. I may add support for multiple lines eventually, though!
 
-#### Empty Fields
+### Empty Fields
 You can leave as many fields empty as you wish. If a field is empty, the mod will let the game play the regular dialogue for the corresponding part.
 
 You ***can*** erase any fields, so long as you're mindful of JSON syntax!
@@ -95,7 +95,7 @@ If you're struggling with JSON syntax, you can use an online JSON validator. The
 
 And here's an explanation of what each field is for:
 
-#### Filename & Description
+### Filename & Description
 
 | Field       | Explanation                                                                                                                           |
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------|
@@ -105,7 +105,7 @@ And here's an explanation of what each field is for:
 
 And here's an explanation of each field and the dialogue lines they replace:
 
-#### Prospector
+### Prospector
 
 You can use this to change the Prospector's dialogue lines.
 
@@ -118,7 +118,7 @@ You can use this to change the Prospector's dialogue lines.
 | IfNoGold      | What the Prospector says if there are no cards on the board when he's about to strike it (I assume?). Defaults to *"N-... NO GOLD?"*. |
 | MuleKilled    | What the Prospector says when you kill his Pack Mule card.                                                                            |
 
-#### Angler
+### Angler
 
 You can use this to change the Angler's dialogue lines.
 

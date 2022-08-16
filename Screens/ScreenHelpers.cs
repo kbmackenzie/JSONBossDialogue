@@ -7,6 +7,7 @@ using DiskCardGame;
 using HarmonyLib;
 using UnityEngine;
 using InscryptionAPI.Ascension;
+using System.Collections;
 
 namespace JSONBossDialogue
 {
@@ -16,7 +17,8 @@ namespace JSONBossDialogue
 
         private void Update()
         {
-            if(PatchButtons.isTextEmpty)
+            // Update page description (for when the cursor exits an AscensionMenuInteractable object)!
+            if (PatchButtons.isTextEmpty)
             {
                 screen.SetDescription();
                 PatchButtons.isTextEmpty = false;
@@ -33,31 +35,66 @@ namespace JSONBossDialogue
 
         public bool isLeft, isActive; // I'm unsure if I'll need 'isActive'?
 
-        private bool isSelected;
+        private bool isSelected, coroutineStart;
+        private float blink = DialogueSelectScreen.blinkTime;
 
         public SpriteRenderer theSR;
 
         private void Update()
         {
-            theSR.sprite = isSelected ? sprites["ArrowHover"] : sprites["Arrow"];
+            if(isSelected)
+            {
+                if (!coroutineStart)
+                {
+                    StartCoroutine(BlinkAnimation(sprites["Arrow"], sprites["ArrowHover"]));
+                    coroutineStart = true;
+                }
+            } else
+            {
+                if (coroutineStart)
+                {
+                    StopAllCoroutines();
+                    coroutineStart = false;
+                }
+
+                theSR.sprite = sprites["Arrow"];
+            }
         }
 
         // Cursor no longer hovering over icon
         public void OnMouseExit()
         {
             isSelected = false;
+
+            // Clear changes to cursor
+            Singleton<InteractionCursor>.Instance.ClearForcedCursorType();
         }
 
         public void OnMouseEnter()
         {
             isSelected = true;
             CommandLineTextDisplayer.PlayCommandLineClickSound();
+
+            // Change cursor to 'Point':
+            Singleton<InteractionCursor>.Instance.ForceCursorType(CursorType.Point);
         }
 
         public void OnMouseDown()
         {
             screen.UpdatePage(isLeft);
             CommandLineTextDisplayer.PlayCommandLineClickSound();
+        }
+
+        private IEnumerator BlinkAnimation(Sprite normal, Sprite hover)
+        {
+            while (isSelected)
+            {
+                theSR.sprite = hover;
+                yield return new WaitForSeconds(blink);
+
+                theSR.sprite = normal;
+                yield return new WaitForSeconds(blink);
+            }
         }
     }
 
@@ -66,13 +103,6 @@ namespace JSONBossDialogue
     [HarmonyPatch]
     internal static class PatchButtons
     {
-        /*[HarmonyPostfix]
-        [HarmonyPatch(typeof(AscensionMenuBackButton), nameof(AscensionMenuBackButton.OnCursorExit))]
-        static void PatchBackButton()
-        {
-
-        }*/ // Redundant.
-
         public static bool isTextEmpty;
 
         [HarmonyPostfix]

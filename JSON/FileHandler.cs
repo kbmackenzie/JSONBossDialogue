@@ -6,7 +6,7 @@ namespace JSONBossDialogue
 {
     internal static class FileHandler
     {
-        // Get directory. (Yes, I know this is very redundant. Bear with me.)
+        // Get directory. (Yes, I know this is very redundant. Bear with me!)
         public static string GetDirectory()
         {
             return Paths.PluginPath;
@@ -25,6 +25,7 @@ namespace JSONBossDialogue
         }
 
         // Takes SearchDirectory() as argument. Checks if array has more than one item.
+        // (Not really useful to us anymore.)
         public static bool isArrayMany(string[] array)
         {
             return array.Length > 1;
@@ -42,11 +43,11 @@ namespace JSONBossDialogue
         // Method should take "ReadFile()" as argument.
         public static JSONHandler JSONLoadIntoObject(string jsontext)
         {
-            //return TinyJSON.JSON.Load(jsontext).Make<JSONHandler>();
-
             return JsonConvert.DeserializeObject<JSONHandler>(jsontext);
         }
 
+        // Parse JSON to string. This is for saving the JSON data in ModdedSaveFile.
+        // Indentation is optional and I'm only including it in case it's useful later.
         public static string JSONWriteAsString(JSONHandler obj, bool indentation = false)
         {
             if(indentation)

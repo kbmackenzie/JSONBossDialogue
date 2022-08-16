@@ -45,12 +45,10 @@ namespace JSONBossDialogue
             getFile = FileHandler.SearchDirectory(directory);
 
             // CREATE JSON DIALOGUE ARRAY
-            // JSONHandler dialogueObj;
-
             if (!FileHandler.isArrayEmpty(getFile))
             {
-                // Repeat for every item in array, 
-                // creating JSONHandler array for each '_bd.json' file in getFile[].
+                // Repeat for every "_bd.json" file in getFile[]
+                // This creates a list of JSONHandler objects!
 
                 for(int i = 0; i < getFile.Length; i++)
                 {
@@ -60,9 +58,7 @@ namespace JSONBossDialogue
 
                         dialogueArray.Add(FileHandler.JSONLoadIntoObject(FileHandler.ReadFile(getFile, i)));
 
-                        // No loading JSON here; that's for the screen to do!
-                        // The screen will do something like this:
-                        // JSONInput.LoadJSON(dialogueArray[i]);
+                        // No more JSON loading to be done here; the rest is for the screen to do!
 
                         Logger.LogInfo($"Loaded JSON string from file \"{filename}\" successfully!");
                     }
@@ -73,17 +69,6 @@ namespace JSONBossDialogue
                     }
                 }
 
-                /*if (!FileHandler.isArrayMany(getFile)) {
-                } else
-                {
-                    // Plans: Add KCM screen that lets you choose a dialogue file.
-                    // Screen will display each file's name except for the "_bd.json" part. :D 
-                    // So test_bd.json would be displayed as "test".
-
-                    // When I do implenet it, I will comment out this error and log a warning or regular message in the console instead simply making it clear what happened.
-
-                    Logger.LogError("Could not load custom dialogue: There's more than one \"_bd.json\" file in the plugin directory." + Environment.NewLine + "Please choose one custom dialogue file to keep in the plugin folder.");
-                }*/
             } else {
                 Logger.LogError("Could not load custom dialogue: There's no \"_bd.json\" file in the \'plugins\' directory. Please make sure your file's name ends in \"_bd.json\".");
             }

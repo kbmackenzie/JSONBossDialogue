@@ -16,7 +16,7 @@ namespace JSONBossDialogue
             { "default", new Color32(255, 255, 255, 255) }
         };
 
-        // This method should take the directory to the image as an argument.
+        // This method should take the filepath to the image as an argument.
         public static byte[] ArtworkAsBytes(string fileName)
         {
             byte[] bytes;
@@ -118,15 +118,7 @@ namespace JSONBossDialogue
             return Sprite.Create(tex, texRect, pivot);
         }
 
-        /* To use the method above, create a Sprite instance like this:
-            Sprite mySprite = SpriteFromTexture(TextureFromBytes(ArtworkAsBytes(imgName)));
-        */
-
-        /* I've called it like this: 
-            Sprite img2 = LoadTexture.SpriteFromTexture(LoadTexture.TextureFromBytes(LoadTexture.ArtworkAsBytes(imgName)));
-        ... However, I've decided it's better to use a proper method for it. :'D
-         */
-
+        // This method calls all of the ones, making a Sprite object with them.
         public static Sprite MakeSprite(string name, bool recolor = false, string colorName = "default", bool invertAlpha = false)
         {
             return SpriteFromTexture(TextureFromBytes(ArtworkAsBytes(name), recolor, colorName, invertAlpha));

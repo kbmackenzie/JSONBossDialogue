@@ -18,14 +18,13 @@ namespace JSONBossDialogue
         private static string dialogueSave // Syncs up to save.
         {
             get { return ModdedSaveManager.SaveData.GetValue(Plugin.dialogueMod, "DialogueData"); }
-            // set { ModdedSaveManager.RunState.SetValue(Plugin.dialogueMod, "DialogueData", JSONdata); }
         }
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(AscensionMenuScreens), nameof(AscensionMenuScreens.TransitionToGame))]
         static void PatchStartRun(ref bool newRun)
         {
-            JSONInput.UnloadJSON(); // Unload any JSON data, just in case there's any data left over.
+            JSONInput.UnloadJSON(); // This cleans up any leftover JSON data, just in case.
 
             if (!newRun) // If not a new run, load dialogue data from save file
             {

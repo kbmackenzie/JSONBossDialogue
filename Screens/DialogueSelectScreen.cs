@@ -36,8 +36,10 @@ namespace JSONBossDialogue
         private readonly static Vector3 offsetBwnCards = new Vector3(0.6f, 0, 0);
         private readonly static Vector3 offsetStart = new Vector3(-1.5f, 0.15f, 0);
 
-        // ARRAY OF DIALOGUE ICONS
+        // ARRAY OF DIALOGUE ICONS -- No longed used.
         // public static DialogueIcon[] dialogueIcons;
+
+        // LIST OF DIALOGUE ICONS
         public List<DialogueIcon> dialogueIcons = new List<DialogueIcon>();
 
         // ARROWS DICTIONARY
@@ -45,6 +47,9 @@ namespace JSONBossDialogue
 
         // ICON CONTAINER
         public ScreenHelper dialogueBox;
+
+        // BLINK ANIMATION TIME
+        public const float blinkTime = 0.4f;
 
         // CHOSEN DIALOGUE
         public JSONHandler chosenDialogue;
@@ -55,7 +60,7 @@ namespace JSONBossDialogue
         public int selectedIndex = -1, chosenIndex = -1;
 
 
-        // * DESCRIPTION*
+        // * DESCRIPTION *
 
         // Default strings:
         private readonly static string[] basicStr = { "No File Selected", "",
@@ -64,28 +69,19 @@ namespace JSONBossDialogue
         public string nameStr = basicStr[0], descriptionStr = basicStr[1];
 
 
-        // PAGES
+
+        // * PAGES *
         private readonly int maxPages = (int)Math.Floor((float)Plugin.dialogueArray.Count / 6);
 
-        // PAGE NUMBER
+        // PAGE NUMBER -- Page numbering starts at 0.
         public int PageNumber = 0;
-        /* Page numbering starts at 0. Next page is 1.
-         * 
-         * 
-         * This is important because PAGINATORS will take code like the following:
-            num = this.dialogueID + 6 * PageNumber // "6" is the number of DialogueIcon instances.
-            getFiles[num];
-         * So having them start at 1 makes sure this whole thing even works. This code reads strings from getFiles[0] according to the dialogue icon and the page. */
 
         public override void InitializeScreen(GameObject partialScreen)
         {
-            /* string[] text = { "a", "b" };
-            cardInfoLines.ShowText(1, text, true); */
-            // ^^ These only work if I set showCardDisplayer to 'true'.
-
             IconContainer(partialScreen);
         }
 
+        // Create the IconContainer object to hold the dialogue icons (just to be organized):
         public void IconContainer(GameObject parent)
         {
             GameObject obj = new GameObject();
@@ -93,7 +89,6 @@ namespace JSONBossDialogue
             obj.layer = LayerMask.NameToLayer("GBCUI");
             obj.transform.SetParent(parent.transform);
 
-            // Add DialogueBoxController script to obj DialogueIconBox:
             dialogueBox = obj.AddComponent<ScreenHelper>();
             dialogueBox.screen = this;
 
@@ -106,7 +101,7 @@ namespace JSONBossDialogue
             BuildArrows(parent);
         }
 
-        // This method should preferably be called inside a 'for' loop.
+        // Build the dialogue icons. This method should preferably be called inside a 'for' loop.
         public void BuildIcons(int a, GameObject parent)
         {
             GameObject obj = new GameObject();
@@ -129,6 +124,9 @@ namespace JSONBossDialogue
             dialogueIcons.Add(dialogue);
         }
 
+        // Build screen arrows.
+        // ... Also yes, I'm making my own instead of using the arrows AscensionRunSetupScreenBase gives me.
+        // I felt more comfortable doing it like this. I don't think it'll cause any issues!
         public void BuildArrows(GameObject parent)
         {
             float arrowY = 0.16f;
@@ -182,19 +180,17 @@ namespace JSONBossDialogue
             ArrowUpdate();
         }
 
+        // Update visibility of arrows.
         public void ArrowUpdate()
         {
-            // arrowButtons["Left"].arrow.SetActive(PageNumber > 0); // Visibility
-            // arrowButtons["Right"].arrow.SetActive(PageNumber < maxPages); // Visibility
-
             // A different way of handling errors (two-way arrows):
             bool arrowVisibility = maxPages > 0;
             arrowButtons["Left"].arrow.SetActive(arrowVisibility);
             arrowButtons["Right"].arrow.SetActive(arrowVisibility);
         }
 
-        // This method should be called when moving to a new page.
-        // MakeItemsClickable() should be called after this one.
+        // Make ALL items unclickable.
+        // This method should be called when moving to a new page. (Before MakeItemsClickable(), of course.)
         public void MakeItemsNotClickable()
         {
             // Iterate through entire list of dialogueIcons, make them all unclickable:
@@ -204,13 +200,10 @@ namespace JSONBossDialogue
             }
         }
 
+        // Make items clickable if they map to an existing JSONHandler item in the list.
         public void MakeItemsClickable()
         {
-            // Assign which dialogueIcons are clickable and which aren't,
-            // based on the size of the dialogueArray list. (I have to change the name of that list...)
-
             int lengthInPage = Plugin.dialogueArray.Count - 6 * PageNumber;
-            // ^^ Note: I have to make sure this number is never negative.
 
             // Make sure the loop doesn't iterate more than 6 times (nor less than 0??):
             int listLength = lengthInPage > 6 ? 6 : (lengthInPage < 0 ? 0 : lengthInPage);
@@ -261,23 +254,16 @@ namespace JSONBossDialogue
             ArrowUpdate();
 
             // Note: Maybe make it so that the selected dialogue option stays selected even when changing pages?
-            // Maybe I could store the iconID of whichever page was selected? 
+            // As of right now, selection instantly resets when you change pages.
+            // Maybe I could store the iconID of the dialigue icon selected and just try to match it to any of the visible ones...? 
         }
 
 
 
 
-        // LOAD JSON
+        // * LOAD JSON *
 
-        // This method is very redundant. Consider getting rid of it later?
-        public JSONHandler ChooseDialogue(int a)
-        {
-            // int dNum = a + 6 * PageNumber; // If PageNumber = 0, dNum = a.
-            // chosenIndex = dNum;
-            return Plugin.dialogueArray[a];
-        }
-
-
+        // Validate choice of JSON string for loading.
         // This method should be called by DialogueIcons on MouseDown!
         public void ValidateChoice(bool chosen, int id)
         {
@@ -295,6 +281,7 @@ namespace JSONBossDialogue
 
 
 
+        // * DESCRIPTION *
 
         // This method should be called by DialogueIcons on MouseDown and on MouseExit.
         public void SetDescription()
@@ -333,14 +320,4 @@ namespace JSONBossDialogue
             DisplayCardInfo(null, nameStr, descriptionStr);
         }
     }
-
-
-    /*
-        public override void OnEnable()
-        {
-            nameStr = defaultStr[0];
-            descriptionStr = defaultStr[1];
-        }
-     */
-
 }

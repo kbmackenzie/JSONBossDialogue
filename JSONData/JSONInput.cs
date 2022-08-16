@@ -8,8 +8,7 @@ namespace JSONBossDialogue
 
         public static Dictionary<string, string> strPatch = new Dictionary<string, string>()
         {
-            // TKEY = Id, TVALUE = String to replace it with
-            // If I'm changing to this I have to pass the eventId from PatchDialogue to ShowUntilInput btw
+            // KEY = Id, VALUE = String to replace it with
             { "ProspectorPreIntro", "" },
             { "ProspectorIntro", "" },
             { "ProspectorMuleKilled", "" },

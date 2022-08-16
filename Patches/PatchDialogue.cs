@@ -122,16 +122,4 @@ namespace JSONBossDialogue
         }
 
     }
-
-    /*
-    public static class PatchShowUntilInput
-    {
-        
-    }
-
-    
-    public static class PatchShowMessage {
-
-        
-    }*/
 }

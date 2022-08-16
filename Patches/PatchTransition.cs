@@ -1,11 +1,7 @@
 ﻿using BepInEx;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 using DiskCardGame;
 using HarmonyLib;
-using UnityEngine;
 using InscryptionAPI.Saves;
 
 namespace JSONBossDialogue

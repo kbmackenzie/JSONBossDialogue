@@ -1,4 +1,6 @@
 {
+	"FileName": "",
+	"Description": "",
 	"Prospector": {
 		"PreIntro": "",
 		"Intro": "",

@@ -21,6 +21,7 @@
     <PackageReference Include="BepInEx.BaseLib" Version="5.4.19" />
     <PackageReference Include="BepInEx.Core" Version="5.4.19" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="UnityEngine.Modules" Version="2019.4.24" IncludeAssets="compile" />
     <PackageReference Include="Inscryption.GameLibs" Version="1.9.0-r.0" />
   </ItemGroup>
@@ -30,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="TinyJSON">
-      <HintPath>..\JSONBossDialogue1\lib\TinyJSON.dll</HintPath>
+    <Reference Include="InscryptionAPI">
+      <HintPath>libs\InscryptionAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JSONBossDialogue
 {
-    public static class JSONInput
+    internal static class JSONInput
     {
 
         public static Dictionary<string, string> strPatch = new Dictionary<string, string>()
@@ -62,6 +62,34 @@ namespace JSONBossDialogue
 
             // Loads custom dialogue lines into strDialogue3:
             strDialogue3[0] = obj.TrapperTrader["Trade"];
+        }
+
+        public static void UnloadJSON()
+        {
+            // Load custom dialogue lines into strPatch dictionary:
+            strPatch["ProspectorPreIntro"] = "";
+            strPatch["ProspectorIntro"] = "";
+            strPatch["ProspectorMuleKilled"] = "";
+            strPatch["AnglerPreIntro"] = "";
+            strPatch["AnglerIntro"] = "";
+            strPatch["TeachFishHookAimRandom"] = "";
+            strPatch["TeachFishHookAimNew"] = "";
+            strPatch["TeachFishHookPull"] = "";
+            strPatch["TrapperTraderPreIntro"] = "";
+            strPatch["TrapperTraderIntro"] = "";
+            strPatch["TrapperTraderPrePhase2"] = "";
+            strPatch["TrapperTraderPhase2"] = "";
+            strPatch["TrapperTraderPreTrade"] = "";
+            strPatch["TrapperTraderPostTrade"] = "";
+
+            // Load custom dialogue lines into strDialogue2:
+            strDialogue2[0] = "";
+            strDialogue2[1] = "";
+            strDialogue2[2] = "";
+            strDialogue2[3] = "";
+
+            // Loads custom dialogue lines into strDialogue3:
+            strDialogue3[0] = "";
         }
     }
 }

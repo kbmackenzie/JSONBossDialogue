@@ -6,6 +6,8 @@ namespace JSONBossDialogue
     [Serializable]
     public class JSONHandler
     {
+        public string FileName = "", Description = "";
+
         public Dictionary<string, string> Prospector = new Dictionary<string, string>()
         {
             { "PreIntro", "" }, { "Intro", "" },

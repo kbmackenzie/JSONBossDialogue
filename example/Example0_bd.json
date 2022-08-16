@@ -1,0 +1,29 @@
+{
+  "FileName": "Example File",
+  "Description": "This is an example file. It changes nothing as is. You can edit it to add your on custom dialogue.",
+  "Prospector": {
+    "PreIntro": "",
+    "Intro": "",
+    "BeforePickaxe": "",
+    "AfterPickaxe": "",
+    "IfNoGold": "",
+    "MuleKilled": ""
+  },
+  "Angler": {
+    "PreIntro": "",
+    "Intro": "",
+    "GoFish": "",
+    "AimingHook": "",
+    "EasyChoose": "",
+    "HookPull": ""
+  },
+  "TrapperTrader": {
+    "PreIntro": "",
+    "Intro": "",
+    "PrePhase2": "",
+    "Phase2": "",
+    "PreTrade": "",
+    "Trade": "",
+    "PostTrade": ""
+  }
+}

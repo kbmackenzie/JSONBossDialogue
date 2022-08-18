@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using DiskCardGame;
 using HarmonyLib;
-//using System.Collections.Generic;
 
 namespace JSONBossDialogue
 {
@@ -17,15 +16,22 @@ namespace JSONBossDialogue
         public static string dialogueID;
 
         // Array of strings of dialogue (without ID) passed through the ShowUntilInput method:
-        readonly static string[] bossDialogueStrings = {
-            "THAR'S GOLD IN THEM CARDS!", // BeforePickaxe
-            "G-G-GOLD! I'VE STRUCK GOLD!", // AfterPickaxe
-            "N-... NO GOLD?", // IfNoGold
-            "Go fish." // GoFish
+        readonly static string[] bossDialogueStrings2 = {
+            "THAR'S GOLD IN THEM CARDS!",
+            "G-G-GOLD! I'VE STRUCK GOLD!",
+            "N-... NO GOLD?",
+            "Go fish."
         };
 
+        /* The JSON name for each of these is, respectively:
+         * - BeforePickaxe
+         * - AfterPickaxe
+         * - IfNoGold
+         * - GoFish
+         */
+
         // Array of strings of dialogue (without ID) passed through the ShowMessage method:
-        readonly static string[] bossDialogueStrings2 = {
+        readonly static string[] bossDialogueStrings3 = {
             "Trade for what you can, but know this: the rest will stay and fight for me." // Trade 
         };
 
@@ -35,14 +41,12 @@ namespace JSONBossDialogue
         {
             // If bossDialogue = True, player is in a boss fight.
 
-            // If in boss battle:
             if (bossDialogue)
             {
                 // eventId = "id" of dialogue data in dialogue_data file
                 // If id is in this array, it can be replaced.
                 bool stringInArray = JSONInput.strPatch.ContainsKey(eventId);
 
-                // If 'id' string is in array:
                 if (stringInArray)
                 {
                     // See if matching key has empty/null value in strPatch dictionary:
@@ -70,13 +74,13 @@ namespace JSONBossDialogue
 
             if (bossDialogue)
             {
-                bool strInArray2 = bossDialogueStrings.Contains(message);
+                bool strInArray2 = bossDialogueStrings2.Contains(message);
                 // ^ This is for patching the dialogue strings that don't have IDs.
 
                 if (strInArray2)
                 {
                     // Find index of string in array
-                    int index = Array.IndexOf(bossDialogueStrings, message);
+                    int index = Array.IndexOf(bossDialogueStrings2, message);
 
                     // See if the index in the custom string array is empty.
                     bool isEmpty = JSONInput.strDialogue2[index].IsNullOrWhiteSpace();
@@ -89,6 +93,8 @@ namespace JSONBossDialogue
                 {
                     // Patch dialogue.
                     message = JSONInput.strPatch[dialogueID];
+
+                    getDialogue = false;
                 }
             }
         }
@@ -103,13 +109,13 @@ namespace JSONBossDialogue
 
             if (bossDialogue)
             {
-                bool strInArray3 = bossDialogueStrings2.Contains(message);
+                bool strInArray3 = bossDialogueStrings3.Contains(message);
                 // ^ This is for patching the dialogue strings that don't have IDs.
 
                 if (strInArray3)
                 {
                     // Find index of string in array
-                    int index = Array.IndexOf(bossDialogueStrings2, message);
+                    int index = Array.IndexOf(bossDialogueStrings3, message);
 
                     // See if the index in the custom string array is empty.
                     bool isEmpty = JSONInput.strDialogue3[index].IsNullOrWhiteSpace();
@@ -120,6 +126,5 @@ namespace JSONBossDialogue
                 }
             }
         }
-
     }
 }

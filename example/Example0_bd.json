@@ -1,6 +1,6 @@
 {
   "FileName": "Example File",
-  "Description": "This is an example file. It changes nothing as is. You can edit it to add your on custom dialogue.",
+  "Description": "This is an example file. It changes nothing as is. You can edit it to add your own custom dialogue.",
   "Prospector": {
     "PreIntro": "",
     "Intro": "",

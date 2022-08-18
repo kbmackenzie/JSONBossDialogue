@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace JSONBossDialogue
@@ -25,16 +26,12 @@ namespace JSONBossDialogue
             { "TrapperTraderPostTrade", "" }
         };
 
-        // Custom JSON strings - IDs - Array no longer needed.
-        // public static string[] strDialogue = new string[14];
-
         // Custom JSON strings - ShowUntilInput
         public static string[] strDialogue2 = new string[4];
 
         // Custom JSON strings - ShowMessage
         public static string[] strDialogue3 = new string[1];
 
-        // Load JSON
         public static void LoadJSON(JSONHandler obj)
         {
             // Load custom dialogue lines into strPatch dictionary:
@@ -65,30 +62,38 @@ namespace JSONBossDialogue
 
         public static void UnloadJSON()
         {
-            // Load custom dialogue lines into strPatch dictionary:
-            strPatch["ProspectorPreIntro"] = "";
-            strPatch["ProspectorIntro"] = "";
-            strPatch["ProspectorMuleKilled"] = "";
-            strPatch["AnglerPreIntro"] = "";
-            strPatch["AnglerIntro"] = "";
-            strPatch["TeachFishHookAimRandom"] = "";
-            strPatch["TeachFishHookAimNew"] = "";
-            strPatch["TeachFishHookPull"] = "";
-            strPatch["TrapperTraderPreIntro"] = "";
-            strPatch["TrapperTraderIntro"] = "";
-            strPatch["TrapperTraderPrePhase2"] = "";
-            strPatch["TrapperTraderPhase2"] = "";
-            strPatch["TrapperTraderPreTrade"] = "";
-            strPatch["TrapperTraderPostTrade"] = "";
+            // Unload custom dialogue lines from strPatch dictionary:
+            ClearDictionary(strPatch);
 
-            // Load custom dialogue lines into strDialogue2:
-            strDialogue2[0] = "";
-            strDialogue2[1] = "";
-            strDialogue2[2] = "";
-            strDialogue2[3] = "";
+            // Unload custom dialogue lines from strDialogue2:
+            for(int i = 0; i < strDialogue2.Length; i++)
+            {
+                strDialogue2[i] = "";
+            }
 
-            // Loads custom dialogue lines into strDialogue3:
-            strDialogue3[0] = "";
+            // Unload custom dialogue lines from strDialogue3:
+            for(int i = 0; i < strDialogue3.Length; i++)
+            {
+                strDialogue3[i] = "";
+            }
+        }
+
+        private static void ClearDictionary(Dictionary<string, string> obj)
+        {
+            try
+            {
+                for (int i = 0; i < obj.Count; i++)
+                {
+                    var item = obj.ElementAt(i);
+                    string key = item.Key;
+                    obj[key] = "";
+                }
+            }
+            catch (Exception)
+            {
+                Plugin.myLogger.LogError("Exception caught: ClearDictionary method.");
+                //throw;
+            }
         }
     }
 }

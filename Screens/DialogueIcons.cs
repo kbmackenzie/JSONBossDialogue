@@ -12,10 +12,9 @@ namespace JSONBossDialogue
 
         public DialogueSelectScreen screen;
 
-        public int iconID; // Dialogue index! Corresponds to an index of the dialogueArray list! c:
+        public int iconID; // Dialogue index! Corresponds to an index of the dialogueInstances list! c:
 
         public bool clickable = false;
-        // Whether this dialogue icon is clickable or not (if it maps to an existing index).
 
         private bool coroutineStart = false;
         private float blink = DialogueSelectScreen.blinkTime;
@@ -77,7 +76,6 @@ namespace JSONBossDialogue
             }
         }
 
-        // Cursor no longer hovering over icon
         public void OnMouseExit()
         {
             if (clickable)
@@ -118,14 +116,13 @@ namespace JSONBossDialogue
 
                 if (!isChosen)
                 {
-                    // Clear selection for all
                     screen.ClearChoices();
                 }
 
                 // Toggle "isChosen" boolean
                 isChosen = !isChosen;
 
-                // Set "dialogueSelected" (important for showing descriptions and such later)
+                // Set "dialogueChosen" (important for showing descriptions and such later)
                 screen.dialogueChosen = isChosen;
 
                 // Save index if chosen:

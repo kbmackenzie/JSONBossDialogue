@@ -21,12 +21,12 @@ namespace JSONBossDialogue
             get { return PluginGuid; }
         }
 
-        // LOAD JSON - Variables
-        public static string directory, filename;
+        // LOAD FILE - Variables
+        public static string directory;
         public static string[] getFile;
 
-        // DIALOGUE LIST -- Arrays don't work because I don't know how many items I'll have.
-        public static List<JSONHandler> dialogueArray = new List<JSONHandler>();
+        // DIALOGUE LIST -- Dialogue files
+        public static List<JSONHandler> dialogueInstances = new List<JSONHandler>();
 
         private void Awake()
         {
@@ -40,25 +40,22 @@ namespace JSONBossDialogue
             // REGISTER SCREEN
             AscensionScreenManager.RegisterScreen<DialogueSelectScreen>();
 
-            // LOAD JSON
+            // LOAD JSON FILES
             directory = FileHandler.GetDirectory();
             getFile = FileHandler.SearchDirectory(directory);
 
-            // CREATE JSON DIALOGUE ARRAY
+            // CREATE DIALOGUE LIST
             if (!FileHandler.isArrayEmpty(getFile))
             {
                 // Repeat for every "_bd.json" file in getFile[]
-                // This creates a list of JSONHandler objects!
 
                 for(int i = 0; i < getFile.Length; i++)
                 {
+                    string filename = Path.GetFileName(getFile[i]);
+
                     try
                     {
-                        filename = Path.GetFileName(getFile[i]);
-
-                        dialogueArray.Add(FileHandler.JSONLoadIntoObject(FileHandler.ReadFile(getFile, i)));
-
-                        // No more JSON loading to be done here; the rest is for the screen to do!
+                        dialogueInstances.Add(FileHandler.JSONLoadIntoObject(FileHandler.ReadFile(getFile, i)));
 
                         Logger.LogInfo($"Loaded JSON string from file \"{filename}\" successfully!");
                     }
@@ -70,7 +67,7 @@ namespace JSONBossDialogue
                 }
 
             } else {
-                Logger.LogError("Could not load custom dialogue: There's no \"_bd.json\" file in the \'plugins\' directory. Please make sure your file's name ends in \"_bd.json\".");
+                Logger.LogWarning("No custom dialogue files found in the \'plugins\' directory!");
             }
 
         }

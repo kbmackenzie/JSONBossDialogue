@@ -14,6 +14,7 @@ namespace JSONBossDialogue
         private static string dialogueSave // Syncs up to save.
         {
             get { return ModdedSaveManager.SaveData.GetValue(Plugin.dialogueMod, "DialogueData"); }
+            set { ModdedSaveManager.SaveData.SetValue(Plugin.dialogueMod, "DialogueData", value); }
         }
 
         [HarmonyPrefix]
@@ -80,7 +81,7 @@ namespace JSONBossDialogue
 
                 // After this, save JSON dialogue data to save file.
                 string JSONdata = FileHandler.JSONWriteAsString(chosenDialogue);
-                ModdedSaveManager.SaveData.SetValue(Plugin.dialogueMod, "DialogueData", JSONdata);
+                dialogueSave = JSONdata;
 
             } else
             {
@@ -95,7 +96,7 @@ namespace JSONBossDialogue
             chosenDialogue = null;
             JSONInput.UnloadJSON();
 
-            ModdedSaveManager.SaveData.SetValue(Plugin.dialogueMod, "DialogueData", "");
+            dialogueSave = "";
         }
     }
 }

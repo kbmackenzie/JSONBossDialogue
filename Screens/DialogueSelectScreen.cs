@@ -19,7 +19,7 @@ namespace JSONBossDialogue
         private readonly static string[] imgName = { "dialogueicon_kcm3_off-1.png",
                                             "dialogueicon_kcm3_skull-1.png",
                                             "menu_arrow2-1.png"};
-        public static readonly Dictionary<string, Sprite> dialogueSprites = new Dictionary<string, Sprite> {
+        public readonly static Dictionary<string, Sprite> dialogueSprites = new Dictionary<string, Sprite> {
             { "Off", LoadTexture.MakeSprite(imgName[0], true, "red") },
             { "Hover", LoadTexture.MakeSprite(imgName[0], true, "light", true) },
             { "Chosen", LoadTexture.MakeSprite(imgName[1], true, "red") },
@@ -30,9 +30,6 @@ namespace JSONBossDialogue
         // OFFSET BASICS
         private readonly static Vector3 offsetBwnCards = new Vector3(0.6f, 0, 0);
         private readonly static Vector3 offsetStart = new Vector3(-1.5f, 0.15f, 0);
-
-        // ARRAY OF DIALOGUE ICONS -- No longed used.
-        // public static DialogueIcon[] dialogueIcons;
 
         // LIST OF DIALOGUE ICONS
         public List<DialogueIcon> dialogueIcons = new List<DialogueIcon>();
@@ -46,27 +43,30 @@ namespace JSONBossDialogue
         // BLINK ANIMATION TIME
         public const float blinkTime = 0.4f;
 
-        // CHOSEN DIALOGUE
-        public JSONHandler chosenDialogue;
 
-        // Bool for "Has a dialogue file been chosen?", important for showing descriptions
+        // Bool for "Has a dialogue file been chosen?"
         public bool dialogueChosen = false;
         // Selected icon index
         public int selectedIndex = -1, chosenIndex = -1;
 
 
         // * DESCRIPTION *
+        private int currentPage { get { return PageNumber + 1; } }
+        private int totalPages { get { return maxPages + 1; } }
+
+        // Page string:
+        public string pageStr { get { return $"Page {currentPage} of {totalPages}"; } }
 
         // Default strings:
         private readonly static string[] basicStr = { "No File Selected", "",
-                                                    "No filename", "No description."};
+                                                    "Unnamed File", "No description."};
         // Variables:
-        public string nameStr = basicStr[0], descriptionStr = basicStr[1];
+        public string nameStr = basicStr[0], descriptionStr = ""; // basicStr[1];
 
 
 
         // * PAGES *
-        private readonly int maxPages = (int)Math.Floor((float)Plugin.dialogueArray.Count / 6);
+        private int maxPages { get { return (int)Math.Ceiling((float)Plugin.dialogueInstances.Count / 6) - 1; } }
 
         // PAGE NUMBER -- Page numbering starts at 0.
         public int PageNumber = 0;
@@ -178,17 +178,15 @@ namespace JSONBossDialogue
         // Update visibility of arrows.
         public void ArrowUpdate()
         {
-            // A different way of handling errors (two-way arrows):
+            // Two-way arrows:
             bool arrowVisibility = maxPages > 0;
             arrowButtons["Left"].arrow.SetActive(arrowVisibility);
             arrowButtons["Right"].arrow.SetActive(arrowVisibility);
         }
 
         // Make ALL items unclickable.
-        // This method should be called when moving to a new page. (Before MakeItemsClickable(), of course.)
         public void MakeItemsNotClickable()
         {
-            // Iterate through entire list of dialogueIcons, make them all unclickable:
             for(int i = 0; i < dialogueIcons.Count; i++)
             {
                 dialogueIcons[i].clickable = false;
@@ -198,7 +196,7 @@ namespace JSONBossDialogue
         // Make items clickable if they map to an existing JSONHandler item in the list.
         public void MakeItemsClickable()
         {
-            int lengthInPage = Plugin.dialogueArray.Count - 6 * PageNumber;
+            int lengthInPage = Plugin.dialogueInstances.Count - 6 * PageNumber;
 
             // Make sure the loop doesn't iterate more than 6 times (nor less than 0??):
             int listLength = lengthInPage > 6 ? 6 : (lengthInPage < 0 ? 0 : lengthInPage);
@@ -219,6 +217,9 @@ namespace JSONBossDialogue
             {
                 dialogueIcons[i].isChosen = false;
             }
+
+            dialogueChosen = false;
+            chosenIndex = -1;
         }
 
         // Update page when arrows are clicked!
@@ -226,6 +227,7 @@ namespace JSONBossDialogue
         {
             ClearChoices();
             MakeItemsNotClickable();
+            PatchTransition.chosenDialogue = null;
 
             if (PageNumber <= 0 && previous) // If on first page and pressed "Previous",
             {
@@ -247,12 +249,23 @@ namespace JSONBossDialogue
 
             MakeItemsClickable();
             ArrowUpdate();
+            SetDescription();
 
             // Note: Maybe make it so that the selected dialogue option stays selected even when changing pages?
             // As of right now, selection instantly resets when you change pages.
             // Maybe I could store the iconID of the dialigue icon selected and just try to match it to any of the visible ones...? 
         }
 
+        public override void OnEnable()
+        {
+            base.OnEnable();
+
+            challengeHeaderDisplay.UpdateText();
+            ClearChoices();
+            PatchTransition.chosenDialogue = null;
+
+            SetDescription();
+        }
 
 
 
@@ -268,7 +281,7 @@ namespace JSONBossDialogue
                 return;
             }
 
-            PatchTransition.chosenDialogue = Plugin.dialogueArray[id];
+            PatchTransition.chosenDialogue = Plugin.dialogueInstances[id];
 
             string logMessage = chosen ? "Dialogue file selected." : "Dialogue file deselected.";
             Plugin.myLogger.LogInfo(logMessage);
@@ -283,16 +296,16 @@ namespace JSONBossDialogue
         {
             if (dialogueChosen && chosenIndex >= 0)
             {
-                bool nameCheck = Plugin.dialogueArray[chosenIndex].FileName.IsNullOrWhiteSpace();
-                bool descCheck = Plugin.dialogueArray[chosenIndex].Description.IsNullOrWhiteSpace();
+                bool nameCheck = Plugin.dialogueInstances[chosenIndex].FileName.IsNullOrWhiteSpace();
+                bool descCheck = Plugin.dialogueInstances[chosenIndex].Description.IsNullOrWhiteSpace();
 
-                nameStr = nameCheck ? basicStr[2] : "Selected: " + Plugin.dialogueArray[chosenIndex].FileName;
-                descriptionStr = descCheck ? basicStr[3] : Plugin.dialogueArray[chosenIndex].Description;
+                nameStr = nameCheck ? basicStr[2] : "Selected: " + Plugin.dialogueInstances[chosenIndex].FileName;
+                descriptionStr = descCheck ? basicStr[3] : Plugin.dialogueInstances[chosenIndex].Description;
 
             } else
             {
                 nameStr = basicStr[0];
-                descriptionStr = basicStr[1];
+                descriptionStr = pageStr; //basicStr[1];
             }
 
             // Display info:
@@ -304,11 +317,11 @@ namespace JSONBossDialogue
         {
             if(selectedIndex >= 0)
             {
-                bool nameCheck = Plugin.dialogueArray[selectedIndex].FileName.IsNullOrWhiteSpace();
-                bool descCheck = Plugin.dialogueArray[selectedIndex].Description.IsNullOrWhiteSpace();
+                bool nameCheck = Plugin.dialogueInstances[selectedIndex].FileName.IsNullOrWhiteSpace();
+                bool descCheck = Plugin.dialogueInstances[selectedIndex].Description.IsNullOrWhiteSpace();
 
-                nameStr = nameCheck ? basicStr[2] : Plugin.dialogueArray[selectedIndex].FileName;
-                descriptionStr = descCheck ? basicStr[3] : Plugin.dialogueArray[selectedIndex].Description;
+                nameStr = nameCheck ? basicStr[2] : Plugin.dialogueInstances[selectedIndex].FileName;
+                descriptionStr = descCheck ? basicStr[3] : Plugin.dialogueInstances[selectedIndex].Description;
             }
 
             // Display info:

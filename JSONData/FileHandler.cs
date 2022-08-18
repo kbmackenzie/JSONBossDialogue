@@ -18,14 +18,12 @@ namespace JSONBossDialogue
             return Directory.GetFiles(dir, "*_bd.json", SearchOption.AllDirectories);
         }
 
-        // Takes SearchDirectory() as argument. Checks if array is empty.
         public static bool isArrayEmpty(string[] array)
         {
             return array.Length == 0;
         }
 
-        // Takes SearchDirectory() as argument. Checks if array has more than one item.
-        // (Not really useful to us anymore.)
+        // Checks if array has more than one item. (Not useful anymore.)
         public static bool isArrayMany(string[] array)
         {
             return array.Length > 1;
@@ -46,7 +44,7 @@ namespace JSONBossDialogue
             return JsonConvert.DeserializeObject<JSONHandler>(jsontext);
         }
 
-        // Parse JSON to string. This is for saving the JSON data in ModdedSaveFile.
+        // Parse JSON to string. This is for saving the JSON data in the ModdedSaveFile.
         // Indentation is optional and I'm only including it in case it's useful later.
         public static string JSONWriteAsString(JSONHandler obj, bool indentation = false)
         {

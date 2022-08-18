@@ -16,7 +16,6 @@ namespace JSONBossDialogue
             { "default", new Color32(255, 255, 255, 255) }
         };
 
-        // This method should take the filepath to the image as an argument.
         public static byte[] ArtworkAsBytes(string fileName)
         {
             byte[] bytes;
@@ -38,7 +37,7 @@ namespace JSONBossDialogue
             // Handle image-loading issues somewhere else! c:
             // Try-catching this method is a good idea.
 
-            bytes = File.ReadAllBytes(imgs[0]); // Image to be used as texture
+            bytes = File.ReadAllBytes(imgs[0]);
 
             return bytes; // Handle null possibility later?
         }
@@ -51,10 +50,10 @@ namespace JSONBossDialogue
             ImageConversion.LoadImage(tex, array);
             tex.filterMode = FilterMode.Point; // Pixel-perfect filter.
 
-            // If true, recolor texture with colorName
+            // RECOLOR -- Replace all white pixels with colorName
             if(recolor)
             {
-                // See if 'colorName' exists in AscenscionColors dictionary:
+                // See if 'colorName' exists in the AscenscionColors dictionary:
                 bool isValidColor = AscenscionColors.ContainsKey(colorName);
 
                 // If not, set colorName to "default"
@@ -65,7 +64,7 @@ namespace JSONBossDialogue
                     Plugin.myLogger.LogWarning("Invalid color name?");
                 }
 
-                // Invert alpha to create a "hovering over" sprite
+                // INVERT ALPHA -- This is helpful to create the "Hover" sprites in this mod!
                 if (invertAlpha)
                 {
                     Color transparent = new Color(1, 1, 1, 0);
@@ -78,7 +77,7 @@ namespace JSONBossDialogue
                             {
                                 // Change transparent pixels to this color
                                 tex.SetPixel(x, y, AscenscionColors[colorName]);
-                            } else // if (tex.GetPixel(x, y).a > 0) // If pixel is opaque
+                            } else
                             {
                                 // Change white pixels to transparent pixels
                                 tex.SetPixel(x, y, transparent);
@@ -87,9 +86,6 @@ namespace JSONBossDialogue
                     }
                 } else
                 {
-                    // Replace colors -- What should be used for regular sprites!
-
-                    // Replace the color white
                     Color replaceColor = AscenscionColors["default"];
 
                     for (int y = 0; y < tex.height; y++) // Go through the Y-Axis
@@ -118,7 +114,7 @@ namespace JSONBossDialogue
             return Sprite.Create(tex, texRect, pivot);
         }
 
-        // This method calls all of the ones, making a Sprite object with them.
+        // This method calls all of the above, making a Sprite object with them.
         public static Sprite MakeSprite(string name, bool recolor = false, string colorName = "default", bool invertAlpha = false)
         {
             return SpriteFromTexture(TextureFromBytes(ArtworkAsBytes(name), recolor, colorName, invertAlpha));

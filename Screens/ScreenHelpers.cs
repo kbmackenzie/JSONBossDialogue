@@ -10,6 +10,12 @@ namespace JSONBossDialogue
     {
         public DialogueSelectScreen screen;
 
+        /*private void Start()
+        {
+            // Set default description.
+            screen.descriptionStr = screen.pageStr;
+        }*/
+
         private void Update()
         {
             // Update page description (for when the cursor exits an AscensionMenuInteractable object)!
@@ -28,7 +34,7 @@ namespace JSONBossDialogue
 
         private Dictionary<string, Sprite> sprites = DialogueSelectScreen.dialogueSprites;
 
-        public bool isLeft, isActive; // I'm unsure if I'll need 'isActive'?
+        public bool isLeft; // isActive; // I'm unsure if I'll need 'isActive'?
 
         private bool isSelected, coroutineStart;
         private float blink = DialogueSelectScreen.blinkTime;

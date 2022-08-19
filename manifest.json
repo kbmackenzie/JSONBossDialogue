@@ -1,0 +1,10 @@
+{
+    "name": "JSONBossDialogue",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/KBMackenzie/JSONBossDialogue",
+    "description": "Easily load custom dialogue for the first three bosses in Kaycee's Mod with a JSON file.",
+    "dependencies": [
+		"BepInEx-BepInExPack_Inscryption-5.4.1901",
+		"API_dev-API-2.4.0"
+    ]
+}

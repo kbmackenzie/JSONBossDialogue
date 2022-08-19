@@ -1,6 +1,10 @@
 This is a BepInEx plugin mod made for Inscryption.
 This mod lets you load custom dialogue for the three first bosses in the game (the Prospector, the Angler and the Trapper/Trader) with a JSON file.
 
+It adds a custom menu screen to Kaycee's Mod, which looks like this:
+
+![Dialogue Selection Screen](screenshot.jpg)
+
 This mod doesn't change your original game files and shouldn't affect your main game save data, but making a backup of your save file before installation is still advised.
 
 ## Installation
@@ -8,14 +12,9 @@ This mod’s only dependencies are BepInEx and the InscryptionAPI mod.
 
 There are two ways of installing this mod: with the help of a mod manager (like r2modman or the Thunderstore Mod Manager) or manually.
 
-**At the time of writing this,** the mod isn't yet on Thunderstore, so using a mod manager will only help you install BepInEx. This is already extremely helpful, though.
-
 #### Installation (Mod Manager)
 1. Download and install [r2modman](https://thunderstore.io/package/ebkr/r2modman/) or the [Thunderstore Mod Manager](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager).
-2. Go to the page for the ["BepInExPack Inscryption" mod on Thunderstore](https://inscryption.thunderstore.io/package/BepInEx/BepInExPack_Inscryption/) and follow its automated installation guide.
-3. Download and install the [Inscryption API mod](https://inscryption.thunderstore.io/package/API_dev/API/) with the mod manager.
-4. Go on `Settings > Browse Profile Folder` to open up the folder of your current mod manager profile and find the `BepInEx > plugins` folder.
-5. Place the contents of **"JSONBossDialogue.zip"** in a new folder within the plugins folder.
+2. Install this mod and all of its dependencies with the help of the mod manager! 
 
 #### Installation (Manual)
 1. Download and install BepInEx.
@@ -82,7 +81,7 @@ For example, let's say I'm making a mod that replaces the Pack Mule with an Unic
 ```json
 {
         "FileName": "Unicorn Mod",
-        "Description": "Changes Prospector dialogue so he'll talk about my Unicorn instead.",
+        "Description": "Changes Prospector dialogue so he'll talk about my Unicorn.",
         "Prospector": {
                 "MuleKilled": "YE COWARD!! THAT UNICORN WAS DEFENSELESS!!"
         }
@@ -131,7 +130,7 @@ You can use this to change the Angler's dialogue lines.
 | EasyChoose | What the Angler says when you place a new card on the board and he aims his hook towards it. (I think this is skipped in Kaycee's mod.) |
 | HookPull   | What the Angler says when he pulls one of your cards with his hook. (I think this is skipped in Kaycee's Mod.)                          |
 
-#### Trapper / Trader
+### Trapper / Trader
 
 You can use this to change the Trapper/Trader's dialogue lines.
 
@@ -169,7 +168,7 @@ As I mentioned in the "Important Notes" section above, using an online JSON vali
 
 **Q:** *"Does this mod support color codes?*
 
-**A:** I don't think so...?? I haven't tested it enough! If you can get color codes working though, you should totally let me know!
+**A:** I don't think so...?? I haven't tested it enough! If you can get color codes working though, you should totally let me know!  
 
 ## Credits
 This project uses [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) for parsing JSON data.

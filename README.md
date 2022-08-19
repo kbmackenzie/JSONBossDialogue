@@ -46,7 +46,7 @@ Afterward, paste the following into the file:
 		"BeforePickaxe": "",
 		"AfterPickaxe": "",
 		"IfNoGold": "",
-    "MuleKilled": ""
+		"MuleKilled": ""
 	},
 	"Angler": {
 		"PreIntro": "",

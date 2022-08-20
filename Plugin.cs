@@ -9,11 +9,12 @@ using System.Collections.Generic;
 namespace JSONBossDialogue
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
+    [BepInDependency("cyantist.inscryption.api", BepInDependency.DependencyFlags.HardDependency)]
     public class Plugin : BaseUnityPlugin
     {
         private const string PluginGuid = "Kel.inscryption.jsonbossdialogue";
         private const string PluginName = "JSONBossDialogue";
-        private const string PluginVersion = "1.0.0.0";
+        private const string PluginVersion = "1.0.3.0";
 
         internal static ManualLogSource myLogger; // Log source.
         public static string dialogueMod

@@ -7,7 +7,7 @@ namespace JSONBossDialogue
 {
     public class DialogueIcon : MonoBehaviour
     {
-        public bool isSelected, isChosen;
+        public bool isHovered, isChosen;
         public SpriteRenderer theSR;
 
         public DialogueSelectScreen screen;
@@ -36,7 +36,7 @@ namespace JSONBossDialogue
             }
 
             // ... I'm very sorry for the 'if' tree. I'm sorry.
-            if (isSelected)
+            if (isHovered)
             {
                 if (isChosen)
                 {
@@ -80,9 +80,9 @@ namespace JSONBossDialogue
         {
             if (clickable)
             {
-                isSelected = false;
+                isHovered = false;
 
-                screen.selectedIndex = -1;
+                screen.hoverIndex = -1;
 
                 screen.SetDescription();
 
@@ -96,9 +96,9 @@ namespace JSONBossDialogue
         {
             if (clickable)
             {
-                isSelected = true;
+                isHovered = true;
 
-                screen.selectedIndex = iconID;
+                screen.hoverIndex = iconID;
 
                 screen.SetDescriptionHover();
 
@@ -135,7 +135,7 @@ namespace JSONBossDialogue
 
         private IEnumerator BlinkAnimation(Sprite normal, Sprite hover)
         {
-            while (isSelected)
+            while (isHovered)
             {
                 theSR.sprite = hover;
                 yield return new WaitForSeconds(blink);

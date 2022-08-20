@@ -47,7 +47,7 @@ namespace JSONBossDialogue
         // Bool for "Has a dialogue file been chosen?"
         public bool dialogueChosen = false;
         // Selected icon index
-        public int selectedIndex = -1, chosenIndex = -1;
+        public int hoverIndex = -1, chosenIndex = -1;
 
 
         // * DESCRIPTION *
@@ -315,13 +315,13 @@ namespace JSONBossDialogue
         // This method should be called by DialogueIcons on MouseEnter.
         public void SetDescriptionHover()
         {
-            if(selectedIndex >= 0)
+            if(hoverIndex >= 0)
             {
-                bool nameCheck = Plugin.dialogueInstances[selectedIndex].FileName.IsNullOrWhiteSpace();
-                bool descCheck = Plugin.dialogueInstances[selectedIndex].Description.IsNullOrWhiteSpace();
+                bool nameCheck = Plugin.dialogueInstances[hoverIndex].FileName.IsNullOrWhiteSpace();
+                bool descCheck = Plugin.dialogueInstances[hoverIndex].Description.IsNullOrWhiteSpace();
 
-                nameStr = nameCheck ? basicStr[2] : Plugin.dialogueInstances[selectedIndex].FileName;
-                descriptionStr = descCheck ? basicStr[3] : Plugin.dialogueInstances[selectedIndex].Description;
+                nameStr = nameCheck ? basicStr[2] : Plugin.dialogueInstances[hoverIndex].FileName;
+                descriptionStr = descCheck ? basicStr[3] : Plugin.dialogueInstances[hoverIndex].Description;
             }
 
             // Display info:

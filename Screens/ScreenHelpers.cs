@@ -36,14 +36,14 @@ namespace JSONBossDialogue
 
         public bool isLeft; // isActive; // I'm unsure if I'll need 'isActive'?
 
-        private bool isSelected, coroutineStart;
+        private bool isHovered, coroutineStart;
         private float blink = DialogueSelectScreen.blinkTime;
 
         public SpriteRenderer theSR;
 
         private void Update()
         {
-            if(isSelected)
+            if(isHovered)
             {
                 if (!coroutineStart)
                 {
@@ -65,7 +65,7 @@ namespace JSONBossDialogue
         // Cursor no longer hovering over icon
         public void OnMouseExit()
         {
-            isSelected = false;
+            isHovered = false;
 
             // Clear changes to cursor
             Singleton<InteractionCursor>.Instance.ClearForcedCursorType();
@@ -73,7 +73,7 @@ namespace JSONBossDialogue
 
         public void OnMouseEnter()
         {
-            isSelected = true;
+            isHovered = true;
             CommandLineTextDisplayer.PlayCommandLineClickSound();
 
             // Change cursor to 'Point':
@@ -88,7 +88,7 @@ namespace JSONBossDialogue
 
         private IEnumerator BlinkAnimation(Sprite normal, Sprite hover)
         {
-            while (isSelected)
+            while (isHovered)
             {
                 theSR.sprite = hover;
                 yield return new WaitForSeconds(blink);

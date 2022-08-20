@@ -1,6 +1,6 @@
 {
     "name": "JSON_Boss_Dialogue",
-    "version_number": "1.0.1",
+    "version_number": "1.0.2",
     "website_url": "https://github.com/KBMackenzie/JSONBossDialogue",
     "description": "Easily load custom dialogue for the first three bosses in Kaycee's Mod with a JSON file.",
     "dependencies": [

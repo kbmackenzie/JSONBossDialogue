@@ -39,6 +39,7 @@ namespace JSONBossDialogue
             { "LeshyBossMoon1", "" },
             { "LeshyBossMoon2", "" },
             { "LeshyBossStinkyMoon", "" },
+            { "LeshyBossMoonDestroyed", "" },
 
             // Royal:
             
@@ -100,6 +101,7 @@ namespace JSONBossDialogue
             strPatch["LeshyBossMoon1"] = obj.Leshy["PreMoon"];
             strPatch["LeshyBossMoon2"] = obj.Leshy["MoonPlayed"];
             strPatch["LeshyBossStinkyMoon"] = obj.Leshy["StinkyMoon"];
+            strPatch["LeshyBossMoonDestroyed"] = obj.Leshy["MoonDestroyed"];
 
             // Royal (yep. A LOT.)
             strPatch["PirateSkullIntro1"] = obj.Royal["LeshyConfusion"];

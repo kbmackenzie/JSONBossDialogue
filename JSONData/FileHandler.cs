@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using System.IO;
+using UnityEngine;
 using Newtonsoft.Json;
 
 namespace JSONBossDialogue

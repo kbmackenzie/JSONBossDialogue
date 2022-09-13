@@ -31,8 +31,8 @@ namespace JSONBossDialogue
          * - Prospector -- AfterPickaxe
          * - Angler -- IfNoGold
          * - Angler -- GoFish
-         * - Royal -- Goodbye1
-         * - Royal -- Goodbye2
+         * - Royal -- Defeated
+         * - Royal -- Farewell
          */
 
         // Array of strings of dialogue (without ID) passed through the ShowMessage method:

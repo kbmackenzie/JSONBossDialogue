@@ -33,7 +33,7 @@ namespace JSONBossDialogue
 
                 try
                 {
-                    //FileLog.Log(dialogueSave);
+                    // FileLog.Log(dialogueSave);
 
                     // Load data from save
                     JSONHandler obj = FileHandler.JSONLoadIntoObject(dialogueSave);

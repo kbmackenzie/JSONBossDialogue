@@ -32,6 +32,7 @@ namespace JSONBossDialogue
             { "Intro", "" }, { "AddCandle", "" },
             { "Deathcards_Intro", "" }, { "Deathcards_Outro", "" },
             { "PreMoon", "" }, { "MoonPlayed", "" }, { "StinkyMoon", "" },
+            { "MoonDestroyed", "" },
         };
 
         public Dictionary<string, string> Royal = new Dictionary<string, string>()

@@ -14,7 +14,7 @@ namespace JSONBossDialogue
     {
         private const string PluginGuid = "Kel.inscryption.jsonbossdialogue";
         private const string PluginName = "JSONBossDialogue";
-        private const string PluginVersion = "1.0.3.0";
+        private const string PluginVersion = "1.0.3";
 
         internal static ManualLogSource myLogger; // Log source.
         public static string dialogueMod

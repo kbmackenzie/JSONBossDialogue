@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using DiskCardGame;
 using HarmonyLib;
+using static DialogueEvent;
 
 namespace JSONBossDialogue
 {
@@ -11,7 +12,7 @@ namespace JSONBossDialogue
     [HarmonyPatch]
     internal static class PatchDialogue
     {
-        public static bool bossDialogue = false, getDialogue = false;
+        public static bool bossDialogue, getDialogue, isAuto, isRoyal, speakerRoyal;
 
         public static string dialogueID;
 
@@ -47,8 +48,10 @@ namespace JSONBossDialogue
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(TextDisplayer), nameof(TextDisplayer.PlayDialogueEvent))]
-        static void PatchIDs(ref string eventId)
+        static void PatchIDs(ref string eventId, ref TextDisplayer.MessageAdvanceMode advanceMode)
         {
+            // FileLog.Log("eventId: " + eventId);
+
             // If bossDialogue = True, player is in a boss fight.
 
             if (bossDialogue && JSONInput.strPatch.ContainsKey(eventId))
@@ -61,9 +64,22 @@ namespace JSONBossDialogue
 
                 // If not, fetch dialogue
                 getDialogue = !isEmpty;
-
                 // Store dialogue ID in this string variable for use in ShowUntilInput
                 dialogueID = eventId;
+
+
+                // ====== MESSAGE ADVANCE MODE =======
+                isAuto = advanceMode == TextDisplayer.MessageAdvanceMode.Auto;
+
+                // FileLog.Log("dialogueID: " + dialogueID);
+
+                // ROYAL DialogueEvent.Speaker -- Decide whether this line is Royal's or not
+                string[] leshyDialogue_duringRoyal = { "PirateSkullIntro1", "PirateSkullPostCharge" };
+
+                if (isRoyal && !leshyDialogue_duringRoyal.Contains(eventId))
+                {
+                    speakerRoyal = true;
+                }
 
                 eventId = getDialogue ? "Hint_CantSacrificeTerrain" : eventId;
                 // ^ All this does is ensure dialogue is kept to a single line.
@@ -74,7 +90,7 @@ namespace JSONBossDialogue
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(TextDisplayer), nameof(TextDisplayer.ShowUntilInput))]
-        static void PatchShowUntilInput(ref string message)
+        static void PatchShowUntilInput(ref string message, ref DialogueEvent.Speaker speaker)
         {
             // message = String passed to be shown as dialogue.
 
@@ -92,12 +108,20 @@ namespace JSONBossDialogue
                     message = isEmpty ? message : JSONInput.strDialogue2[index];
 
                 }
-                else if (getDialogue)
+                else if (getDialogue && !isAuto)
                 {
                     // Patch dialogue.
                     message = JSONInput.strPatch[dialogueID];
 
+                    // FileLog.Log(message);
+
                     getDialogue = false;
+
+                    if (speakerRoyal)
+                    {
+                        speaker = DialogueEvent.Speaker.PirateSkull;
+                        speakerRoyal = false;
+                    }
                 }
             }
         }
@@ -125,20 +149,37 @@ namespace JSONBossDialogue
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(TextDisplayer), nameof(TextDisplayer.ShowThenClear))]
-        static void PatchShowThenClear(ref string message)
+        static void PatchShowThenClear(ref string message, ref DialogueEvent.Speaker speaker)
         {
             // message = String passed to be shown as dialogue.
 
-            if (bossDialogue && bossDialogueStrings4.Contains(message))
+            if (bossDialogue)
             {
-                // Find index of string in array
-                int index = Array.IndexOf(bossDialogueStrings4, message);
+                if(!getDialogue && bossDialogueStrings4.Contains(message))
+                {
+                    // Find index of string in array
+                    int index = Array.IndexOf(bossDialogueStrings4, message);
 
-                // See if the index in the custom string array is empty.
-                bool isEmpty = JSONInput.strDialogue4[index].IsNullOrWhiteSpace();
+                    // See if the index in the custom string array is empty.
+                    bool isEmpty = JSONInput.strDialogue4[index].IsNullOrWhiteSpace();
 
-                // Patch dialogue.
-                message = isEmpty ? message : JSONInput.strDialogue4[index];
+                    // Patch dialogue.
+                    message = isEmpty ? message : JSONInput.strDialogue4[index];
+                } else if (getDialogue && isAuto)
+                {
+                    // Patch dialogue.
+                    message = JSONInput.strPatch[dialogueID];
+
+                    // FileLog.Log(message);
+
+                    getDialogue = false;
+
+                    if (speakerRoyal)
+                    {
+                        speaker = DialogueEvent.Speaker.PirateSkull;
+                        speakerRoyal = false;
+                    }
+                }
             }
         }
     }

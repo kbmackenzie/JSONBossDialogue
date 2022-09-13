@@ -42,8 +42,12 @@ namespace JSONBossDialogue
             return bytes; // Handle null possibility later?
         }
 
+        // ======== NOTE ~ RESOURCES ========
+        // All this above isn't really necessary if image is already a project resource.
+        // Project resources are already a byte[] array! c:
 
-        // This method should take ArtworkAsBytes as an argument.
+
+        // This method should take a resource image or ArtworkAsBytes as an argument.
         public static Texture2D TextureFromBytes(byte[] array, bool recolor = false, string colorName = "default", bool invertAlpha = false)
         {
             Texture2D tex = new Texture2D(1, 1);
@@ -114,8 +118,17 @@ namespace JSONBossDialogue
             return Sprite.Create(tex, texRect, pivot);
         }
 
-        // This method calls all of the above, making a Sprite object with them.
-        public static Sprite MakeSprite(string name, bool recolor = false, string colorName = "default", bool invertAlpha = false)
+        // ======== MAKE SPRITE ========
+        // The following methods calls all of the methods above, making a Sprite object with them.
+
+        // FROM RESOURCE:
+        public static Sprite MakeSprite(byte[] image, bool recolor = false, string colorName = "default", bool invertAlpha = false)
+        {
+            return SpriteFromTexture(TextureFromBytes(image, recolor, colorName, invertAlpha));
+        }
+
+        // FROM FILEPATH:
+        public static Sprite MakeSprite2(string name, bool recolor = false, string colorName = "default", bool invertAlpha = false)
         {
             return SpriteFromTexture(TextureFromBytes(ArtworkAsBytes(name), recolor, colorName, invertAlpha));
         }

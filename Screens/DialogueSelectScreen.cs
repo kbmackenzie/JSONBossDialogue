@@ -15,17 +15,26 @@ namespace JSONBossDialogue
         public override bool showCardDisplayer => true; // Show card info
         public override bool showCardPanel => false; // Show selectable cards
 
-        // DIALOGUE ICONS
+        // DIALOGUE ICONS -- FILEPATH (no longer using this)
         private readonly static string[] imgName = { "dialogueicon_kcm3_off-1.png",
                                             "dialogueicon_kcm3_skull-1.png",
                                             "menu_arrow2-1.png"};
+
+        // DIALOGUE ICONS -- RESOURCES
+        public static Dictionary<string, byte[]> imgRes = new Dictionary<string, byte[]>()
+        {
+            { "Off", Properties.Resources.DialogueOff },
+            { "Skull", Properties.Resources.DialogueSkull },
+            { "MenuArrow", Properties.Resources.MenuArrow },
+        };
+
         public readonly static Dictionary<string, Sprite> dialogueSprites = new Dictionary<string, Sprite> {
-            { "Off", LoadTexture.MakeSprite(imgName[0], true, "red") },
-            { "Hover", LoadTexture.MakeSprite(imgName[0], true, "light", true) },
-            { "Chosen", LoadTexture.MakeSprite(imgName[1], true, "red") },
-            { "ChosenHover", LoadTexture.MakeSprite(imgName[1], true, "light", true) },
-            { "Arrow", LoadTexture.MakeSprite(imgName[2], true, "red") },
-            { "ArrowHover", LoadTexture.MakeSprite(imgName[2], true, "light", true) } };
+            { "Off", LoadTexture.MakeSprite(imgRes["Off"], true, "red") },
+            { "Hover", LoadTexture.MakeSprite(imgRes["Off"], true, "light", true) },
+            { "Chosen", LoadTexture.MakeSprite(imgRes["Skull"], true, "red") },
+            { "ChosenHover", LoadTexture.MakeSprite(imgRes["Skull"], true, "light", true) },
+            { "Arrow", LoadTexture.MakeSprite(imgRes["MenuArrow"], true, "red") },
+            { "ArrowHover", LoadTexture.MakeSprite(imgRes["MenuArrow"], true, "light", true) } };
 
         // OFFSET BASICS
         private readonly static Vector3 offsetBwnCards = new Vector3(0.6f, 0, 0);

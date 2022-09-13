@@ -22,8 +22,7 @@ namespace JSONBossDialogue
             get { return PluginGuid; }
         }
 
-        // LOAD FILE - Variables
-        public static string directory;
+        // LOAD FILES -- Array
         public static string[] getFile;
 
         // DIALOGUE LIST -- Dialogue files
@@ -42,11 +41,10 @@ namespace JSONBossDialogue
             AscensionScreenManager.RegisterScreen<DialogueSelectScreen>();
 
             // LOAD JSON FILES
-            directory = FileHandler.GetDirectory();
-            getFile = FileHandler.SearchDirectory(directory);
+            getFile = FileHandler.SearchDirectory(Paths.PluginPath);
 
             // CREATE DIALOGUE LIST
-            if (!FileHandler.isArrayEmpty(getFile))
+            if (getFile.Length > 0)
             {
                 // Repeat for every "_bd.json" file in getFile[]
 

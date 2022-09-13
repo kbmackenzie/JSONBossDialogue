@@ -1,5 +1,5 @@
 This is a BepInEx plugin mod made for Inscryption.
-This mod lets you load custom dialogue for the three first bosses in the game (the Prospector, the Angler and the Trapper/Trader) with a JSON file.
+This mod lets you load custom dialogue for all bosses in Kaycee's Mod with a JSON file.
 
 It adds a custom menu screen to Kaycee's Mod, which looks like this:
 
@@ -38,33 +38,59 @@ Afterward, paste the following into the file:
 
 ```json
 {
-	"FileName": "",
-	"Description": "",
-	"Prospector": {
-		"PreIntro": "",
-		"Intro": "",
-		"BeforePickaxe": "",
-		"AfterPickaxe": "",
-		"IfNoGold": "",
-		"MuleKilled": ""
-	},
-	"Angler": {
-		"PreIntro": "",
-		"Intro": "",
-		"GoFish": "",
-		"AimingHook": "",
-		"EasyChoose": "",
-		"HookPull": ""
-	},
-	"TrapperTrader": {
-		"PreIntro": "",
-		"Intro": "",
-		"PrePhase2": "",
-		"Phase2": "",
-		"PreTrade": "",
-		"Trade": "",
-		"PostTrade": ""
-	}
+  "FileName": "",
+  "Description": "",
+  "Prospector": {
+    "PreIntro": "",
+    "Intro": "",
+    "BeforePickaxe": "",
+    "AfterPickaxe": "",
+    "IfNoGold": "",
+    "MuleKilled": ""
+  },
+  "Angler": {
+    "PreIntro": "",
+    "Intro": "",
+    "GoFish": "",
+    "AimingHook": "",
+    "EasyChoose": "",
+    "HookPull": ""
+  },
+  "TrapperTrader": {
+    "PreIntro": "",
+    "Intro": "",
+    "PrePhase2": "",
+    "Phase2": "",
+    "PreTrade": "",
+    "Trade": "",
+    "PostTrade": ""
+  },
+  "Leshy": {
+    "Intro": "",
+    "AddCandle": "",
+    "Deathcards_Intro": "",
+    "Deathcards_Outro": "",
+    "PreMoon": "",
+    "MoonPlayed": "",
+    "StinkyMoon": ""
+  },
+  "Royal": {
+    "LeshyConfusion": "",
+    "WakeUp": "",
+    "PreIntro": "",
+    "Intro": "",
+    "Cannons": "",
+    "CannonFire": "",
+    "Rodents": "",
+    "Limoncello_Charge": "",
+    "LeshyStop": "",
+    "Limoncello_Intro": "",
+    "Limoncello_Mutinee": "",
+    "Limoncello_NoCards": "",
+    "Limoncello_Sunk": "",
+    "Defeated": "",
+    "Farewell": ""
+  }
 }
 ```
 
@@ -104,9 +130,10 @@ And here's an explanation of what each field is for:
 
 And here's an explanation of each field and the dialogue lines they replace:
 
+
 ### Prospector
 
-You can use this to change the Prospector's dialogue lines.
+You can use this to change the Prospector's dialogue lines during his boss fight.
 
 | Field         | Dialogue                                                                                                                              |
 |---------------|---------------------------------------------------------------------------------------------------------------------------------------|
@@ -119,7 +146,7 @@ You can use this to change the Prospector's dialogue lines.
 
 ### Angler
 
-You can use this to change the Angler's dialogue lines.
+You can use this to change the Angler's dialogue lines during his boss fight.
 
 | Field      | Dialogue                                                                                                                                |
 |------------|-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -132,7 +159,7 @@ You can use this to change the Angler's dialogue lines.
 
 ### Trapper / Trader
 
-You can use this to change the Trapper/Trader's dialogue lines.
+You can use this to change the Trapper/Trader's dialogue lines during their boss fight.
 
 | Field     | Dialogue                                          |
 |-----------|---------------------------------------------------|
@@ -143,6 +170,45 @@ You can use this to change the Trapper/Trader's dialogue lines.
 | PreTrade  | What the Trader says before trading.              |
 | Trade     | What the Trader says during the trade.            |
 | PostTrade | What the Trader says after trading.               |
+
+### Leshy
+
+You can use this to change Leshy's dialogue lines during his boss fight.
+
+| Field            | Dialogue                                                        |
+|------------------|-----------------------------------------------------------------|
+| Intro            | Leshy's lines before his own fight starts.                      |
+| AddCandle        | Leshy's lines before he lights his third candle.                |
+| Deathcards_Intro | Phase 2. Leshy's lines before he plays deathcards.              |
+| Deathcards_Outro | Leshy's lines after he plays the deathcards.                    |
+| PreMoon          | Leshy's ines before he takes a photo of the moon and plays it.  |
+| MoonPlayed       | Leshy's lines after he plays his Moon card.                     |
+| StinkyMoon       | Leshy's lines when you use the Stinky sigil to weaken his Moon. |
+
+**Note:** The "StinkyMoon" line will not play during Kaycee's Mod thanks to the Moon's "Made of Stone" sigil, and since this mod only works with Kaycee's Mod, this field does nothing. 
+I'm only including the "StinkyMoon" field in case I decide to do something with it in the future.
+
+### Royal
+
+You can use this to change Royal's dialogue lines during his boss fight.
+
+| Field              | Dialogue                                                                      |
+|--------------------|-------------------------------------------------------------------------------|
+| LeshyConfusion     | Leshy's lines before he lets Royal take over.                                 |
+| WakeUp             | Royal "wakes up".                                                             |
+| PreIntro           | Royal's excited lines before the skull is lifted off the table.               |
+| Intro              | Royal's introduction.                                                         |
+| Cannons            | What Royal says when he's aiming his cannons.                                 |
+| CannonFire         | What Royal says when he fires his cannons.                                    |
+| Rodents            | Royal's lines when he gives you a pack of Rodent cards.                       |
+| Limoncello_Charge  | Phase 3: Royal's lines before he charges at you with his ship.                |
+| LeshyStop          | Leshy's lines as he stops the Limoncello before it hits the player.           |
+| Limoncello_Intro   | Royal introduces the Limoncello. (Gets skipped after a few playthroughs. (?)) |
+| Limoncello_Mutinee | Royal's lines when one of his skeletons betrays him.                          |
+| Limoncello_NoCards | Royal's lines when you run out of squirrels during his fight.                 |
+| Limoncello_Sunk    | Royal's lines when you defeat the Limoncello.                                 |
+| Defeated           | Royal's line before he tips his hat. Defaults to _"Avast ye!"_.               |
+| Farewell           | Royal's goodbye. It defaults to _"Farewell."_.                                |
 
 
 ## Important Notes

@@ -1,55 +1,56 @@
 {
-  "FileName": "0",
-  "Description": "Insert description here.",
-  "Prospector": {
-    "PreIntro": "",
-    "Intro": "",
-    "BeforePickaxe": "",
-    "AfterPickaxe": "",
-    "IfNoGold": "",
-    "MuleKilled": ""
-  },
-  "Angler": {
-    "PreIntro": "",
-    "Intro": "",
-    "GoFish": "",
-    "AimingHook": "",
-    "EasyChoose": "",
-    "HookPull": ""
-  },
-  "TrapperTrader": {
-    "PreIntro": "",
-    "Intro": "",
-    "PrePhase2": "",
-    "Phase2": "",
-    "PreTrade": "",
-    "Trade": "",
-    "PostTrade": ""
-  },
-  "Leshy": {
-    "Intro": "",
-    "AddCandle": "",
-    "Deathcards_Intro": "",
-    "Deathcards_Outro": "",
-    "PreMoon": "",
-    "MoonPlayed": "",
-    "StinkyMoon": ""
-  },
-  "Royal": {
-    "LeshyConfusion": "",
-    "WakeUp": "",
-    "PreIntro": "",
-    "Intro": "",
-    "Cannons": "",
-    "CannonFire": "",
-    "Rodents": "",
-    "Limoncello_Charge": "",
-    "LeshyStop": "",
-    "Limoncello_Intro": "",
-    "Limoncello_Mutinee": "",
-    "Limoncello_NoCards": "",
-    "Limoncello_Sunk": "",
-    "Defeated": "",
-    "Farewell": ""
-  }
+	"FileName": "",
+	"Description": "",
+	"Prospector": {
+        "PreIntro": "",
+		"Intro": "",
+		"BeforePickaxe": "",
+		"AfterPickaxe": "",
+		"IfNoGold": "",
+		"MuleKilled": ""
+	},
+	"Angler": {
+		"PreIntro": "",
+		"Intro": "",
+		"GoFish": "",
+		"AimingHook": "",
+		"EasyChoose": "",
+		"HookPull": ""
+	},
+	"TrapperTrader": {
+		"PreIntro": "",
+		"Intro": "",
+		"PrePhase2": "",
+		"Phase2": "",
+		"PreTrade": "",
+		"Trade": "",
+		"PostTrade": ""
+	},
+	"Leshy": {
+		"Intro": "",
+		"AddCandle": "",
+		"Deathcards_Intro": "",
+		"Deathcards_Outro": "",
+		"PreMoon": "",
+		"MoonPlayed": "",
+		"StinkyMoon": "",
+		"MoonDestroyed": ""
+	},
+	"Royal": {
+		"LeshyConfusion": "",
+		"WakeUp": "",
+		"PreIntro": "",
+		"Intro": "",
+		"Cannons": "",
+		"CannonFire": "",
+		"Rodents": "",
+		"Limoncello_Charge": "",
+		"LeshyStop": "",
+		"Limoncello_Intro": "",
+		"Limoncello_Mutinee": "",
+		"Limoncello_NoCards": "",
+		"Limoncello_Sunk": "",
+		"Defeated": "",
+		"Farewell": ""
+	}
 }

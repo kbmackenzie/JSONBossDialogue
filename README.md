@@ -38,59 +38,60 @@ Afterward, paste the following into the file:
 
 ```json
 {
-  "FileName": "",
-  "Description": "",
-  "Prospector": {
-    "PreIntro": "",
-    "Intro": "",
-    "BeforePickaxe": "",
-    "AfterPickaxe": "",
-    "IfNoGold": "",
-    "MuleKilled": ""
-  },
-  "Angler": {
-    "PreIntro": "",
-    "Intro": "",
-    "GoFish": "",
-    "AimingHook": "",
-    "EasyChoose": "",
-    "HookPull": ""
-  },
-  "TrapperTrader": {
-    "PreIntro": "",
-    "Intro": "",
-    "PrePhase2": "",
-    "Phase2": "",
-    "PreTrade": "",
-    "Trade": "",
-    "PostTrade": ""
-  },
-  "Leshy": {
-    "Intro": "",
-    "AddCandle": "",
-    "Deathcards_Intro": "",
-    "Deathcards_Outro": "",
-    "PreMoon": "",
-    "MoonPlayed": "",
-    "StinkyMoon": ""
-  },
-  "Royal": {
-    "LeshyConfusion": "",
-    "WakeUp": "",
-    "PreIntro": "",
-    "Intro": "",
-    "Cannons": "",
-    "CannonFire": "",
-    "Rodents": "",
-    "Limoncello_Charge": "",
-    "LeshyStop": "",
-    "Limoncello_Intro": "",
-    "Limoncello_Mutinee": "",
-    "Limoncello_NoCards": "",
-    "Limoncello_Sunk": "",
-    "Defeated": "",
-    "Farewell": ""
-  }
+	"FileName": "",
+	"Description": "",
+	"Prospector": {
+        "PreIntro": "",
+		"Intro": "",
+		"BeforePickaxe": "",
+		"AfterPickaxe": "",
+		"IfNoGold": "",
+		"MuleKilled": ""
+	},
+	"Angler": {
+		"PreIntro": "",
+		"Intro": "",
+		"GoFish": "",
+		"AimingHook": "",
+		"EasyChoose": "",
+		"HookPull": ""
+	},
+	"TrapperTrader": {
+		"PreIntro": "",
+		"Intro": "",
+		"PrePhase2": "",
+		"Phase2": "",
+		"PreTrade": "",
+		"Trade": "",
+		"PostTrade": ""
+	},
+	"Leshy": {
+		"Intro": "",
+		"AddCandle": "",
+		"Deathcards_Intro": "",
+		"Deathcards_Outro": "",
+		"PreMoon": "",
+		"MoonPlayed": "",
+		"StinkyMoon": "",
+		"MoonDestroyed": ""
+	},
+	"Royal": {
+		"LeshyConfusion": "",
+		"WakeUp": "",
+		"PreIntro": "",
+		"Intro": "",
+		"Cannons": "",
+		"CannonFire": "",
+		"Rodents": "",
+		"Limoncello_Charge": "",
+		"LeshyStop": "",
+		"Limoncello_Intro": "",
+		"Limoncello_Mutinee": "",
+		"Limoncello_NoCards": "",
+		"Limoncello_Sunk": "",
+		"Defeated": "",
+		"Farewell": ""
+	}
 }
 ```
 
@@ -184,6 +185,7 @@ You can use this to change Leshy's dialogue lines during his boss fight.
 | PreMoon          | Leshy's ines before he takes a photo of the moon and plays it.  |
 | MoonPlayed       | Leshy's lines after he plays his Moon card.                     |
 | StinkyMoon       | Leshy's lines when you use the Stinky sigil to weaken his Moon. |
+| MoonDestroyed    | Leshy's lines when you destroy his Moon card.                   |
 
 **Note:** The "StinkyMoon" line will not play during Kaycee's Mod thanks to the Moon's "Made of Stone" sigil, and since this mod only works with Kaycee's Mod, this field does nothing. 
 I'm only including the "StinkyMoon" field in case I decide to do something with it in the future.
